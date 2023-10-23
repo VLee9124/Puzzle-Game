@@ -21,10 +21,10 @@
 > Purpose: We found this concept interesting because as computer science students, we’ve always had confidence in our problem solving skills. Although our main purpose of this program is to entertain users, we want to do so by tapping into their own problem solving abilities, and creating puzzles/mysteries are one of the most entertaining and thrilling methods of doing so. We wanted to take this a step further and incorporate an “escape room” aspect to our program, where the order of puzzles that we have to solve is intentionally obscured to give players a sense of wonder and mystery.
 
 > Tools/Languages: We will use the following tools to assist with development:
-> * C++ programming language for program coding/building
-> * VSCode as our main IDE
+> * C++ language and standard libraries
+> * VSCode as main IDE
 > * Github for version tracking
-> * Draw.io for diagrams and planning
+> * CMake for generating build files
 
 > Input/Output: All of the necessary user input and output will be done on the terminal.
 > * Input - Our program will require users to do the following directly onto the terminal:
