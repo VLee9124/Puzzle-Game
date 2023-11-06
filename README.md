@@ -43,9 +43,35 @@ Features: The following lists will describe all our planned features, from most 
 
 ### Navigation Diagram
 > Draw a diagram illustrating how the user can navigate from one screen to another. Here is an [example](https://creately.com/diagram/example/ikfqudv82/user-navigation-diagram-classic?r=v). It can be useful to label each symbol that represents a screen so that you can reference the screens in the next section or the rest of the document if necessary. Give a brief description of what the diagram represents.
-<img width="2500" alt="Navigation Diagram" src="https://github.com/cs100/final-project-vlee084-bigna003-chakk001-mvasq094/assets/86755705/f2836463-6801-4e44-9c00-7de6994811f1">
+
+<img width="80%" alt="Navigation Diagram" src="https://github.com/cs100/final-project-vlee084-bigna003-chakk001-mvasq094/assets/86755705/f2836463-6801-4e44-9c00-7de6994811f1">
+
 ### Screen Layouts
 > Include the layout of each of your screens. The layout should describe the screen’s major components such as menus and prompts for user inputs, expected output, and buttons (if applicable). Explain what is on the layout, and the purpose of each menu item, button, etc. If many screens share the same layout, start by describing the general layout and then list the screens that will be using that layout and the differences between each of them.
+
+#### Main Menu
+<img width="60%" height="60%" alt="Main Menu" src="https://github.com/cs100/final-project-vlee084-bigna003-chakk001-mvasq094/assets/86755705/eb3aaef3-dab9-44f4-807d-c18f60645c7b">
+
+#### User Interface
+<img width="60%" height="60%" alt="Main Menu" src="https://github.com/cs100/final-project-vlee084-bigna003-chakk001-mvasq094/assets/86755705/f75f680e-2559-44e8-97e3-e572f9ee114e">
+
+#### Examine Room
+<img width="60%" height="60%" alt="Main Menu" src="https://github.com/cs100/final-project-vlee084-bigna003-chakk001-mvasq094/assets/86755705/d8d31297-7267-4eea-b096-736a4146fac0">
+
+#### Iteract
+<img width="60%" height="60%" alt="Main Menu" src="https://github.com/cs100/final-project-vlee084-bigna003-chakk001-mvasq094/assets/86755705/1c05d59c-118e-4e64-99c9-18b2a8a6c6dd">
+
+#### Collect Item
+<img width="60%" height="60%" alt="Main Menu" src="https://github.com/cs100/final-project-vlee084-bigna003-chakk001-mvasq094/assets/86755705/8ae521de-d286-44e1-a988-6514e4f85e6f">
+
+#### Inventory
+<img width="60%" height="60%" alt="Main Menu" src="https://github.com/cs100/final-project-vlee084-bigna003-chakk001-mvasq094/assets/86755705/0b455dcc-9a5d-40d2-8c55-332306e4db0e">
+
+#### Move
+<img width="60%" height="60%" alt="Main Menu" src="https://github.com/cs100/final-project-vlee084-bigna003-chakk001-mvasq094/assets/86755705/28fa9c9f-bbe9-4e43-a888-1651c5e0293a">
+
+#### Victory
+<img width="60%" height="60%" alt="Main Menu" src="https://github.com/cs100/final-project-vlee084-bigna003-chakk001-mvasq094/assets/86755705/82b49e95-3f96-4695-9cd3-370e4345e2c1">
 
 ## Class Diagram
  > Include a **class diagram(s)** for your project and a **description** of the diagram(s). Your class diagram(s) should include all the main classes you plan for the project. This should be in sufficient detail that another group could pick up the project this point and successfully complete it. Use proper UML notation (as discussed in the course slides).
