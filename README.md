@@ -67,14 +67,14 @@ This is the first screen that the user sees when starting the program. After the
 Every line that requires user input will start with >. Every user input will be represented in chars. Also, if at any point an invalid character is entered, the program doesn’t proceed until a valid character is read.
 
 #### Main Interface
-<img width="60%" height="60%" alt="Main Menu" src="https://github.com/cs100/final-project-vlee084-bigna003-chakk001-mvasq094/assets/86755705/f75f680e-2559-44e8-97e3-e572f9ee114e">
+<img width="60%" height="60%" alt="Main Interface" src="https://github.com/cs100/final-project-vlee084-bigna003-chakk001-mvasq094/assets/86755705/f75f680e-2559-44e8-97e3-e572f9ee114e">
 
 This is the main interface that the user will interact with during the game. The screen outputs the room name and description that the player is in. 
 
 Then, they are tasked to enter F to examine, I to open their inventory, and M to move to a different room. The player can also quit at any time.
 
 #### Examine Room
-<img width="60%" height="60%" alt="Main Menu" src="https://github.com/cs100/final-project-vlee084-bigna003-chakk001-mvasq094/assets/86755705/d8d31297-7267-4eea-b096-736a4146fac0">
+<img width="60%" height="60%" alt="Examine Room" src="https://github.com/cs100/final-project-vlee084-bigna003-chakk001-mvasq094/assets/86755705/d8d31297-7267-4eea-b096-736a4146fac0">
 
 Players will be taken to this screen after they input F back at the main interface. They are given a list of all the object names in the current room and are tasked to enter a number or quit. 
 
@@ -119,6 +119,8 @@ Once the program detects if the player is in the EXIT room, the program will swi
 
 ## Class Diagram
  > Include a **class diagram(s)** for your project and a **description** of the diagram(s). Your class diagram(s) should include all the main classes you plan for the project. This should be in sufficient detail that another group could pick up the project this point and successfully complete it. Use proper UML notation (as discussed in the course slides).
+
+<img width="100%" height="100%" alt="Class Diagram" src="https://github.com/cs100/final-project-vlee084-bigna003-chakk001-mvasq094/assets/86755705/b8677770-cde4-4062-abf0-aeab8ce362c0">
  
  > ## Phase III
  > You will need to schedule a check-in for the second scrum meeting with the same reader you had your first scrum meeting with (using Calendly). Your entire team must be present. This meeting will occur on Zoom and should be conducted by Wednesday of week 8.
