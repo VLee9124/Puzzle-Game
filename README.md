@@ -27,18 +27,6 @@ Features: The following lists will describe all our planned features, from most 
 * Inventory System - Users will input a character onto the menu system to immediately open the inventory system, where they will interact with the items they’ve already collected from the room
 * Puzzles - These are the main obstacles of the game. They lock the player from progressing past them (e.g. locked chest, locked door) unless they can solve the puzzle. Examples of puzzles include finding a key to open a keylock and finding a certain combination to enter on a keypad.
 
- > ## Phase II
- > In addition to completing the "User Interface Specification" and "Class Diagram" sections below, you will need to:
- > * Create an "Epic" (note) for each feature. Place these epics in the `Product Backlog` column
- > * Complete your first *sprint planning* meeting to plan out the next 7 days of work.
- >   * Break down the "Epics" into smaller actionable user stories (i.e. smaller development tasks). Convert them into issues and assign them to team members. Place these in the `TODO` (aka Sprint Backlog) column.
- >   * These cards should represent roughly 7 days worth of development time for your team. Then, once the sprint is over you should be repeating these steps to plan a new sprint, taking you until your second scrum meeting with the reader in phase III.
- > * Schedule two check-ins using Calendly. You need to pick both time slots on Tuesday of week 6. The check-ins will occur on Zoom. Your entire team must be present for both check-ins.
- >   * The first check-in needs to be scheduled with your lab TA. During that meeting, you will discuss your project design/class diagram from phase II.
- >   * The second check-in should be scheduled with a reader. During that meeting you will discuss:
- >     * The tasks you are planning for the first sprint
- >     * How work will be divided between the team members
-
 ## User Interface Specification
 
 ### Navigation Diagram
