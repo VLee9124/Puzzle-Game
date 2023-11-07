@@ -38,16 +38,26 @@ Features: The following lists will describe all our planned features, from most 
  >   * The second check-in should be scheduled with a reader. During that meeting you will discuss:
  >     * The tasks you are planning for the first sprint
  >     * How work will be divided between the team members
+
 ## User Interface Specification
- > Include a navigation diagram for your screens and the layout of each of those screens as desribed below. For all the layouts/diagrams, you can use any tool such as PowerPoint or a drawing program. (Specification requirement is adapted from [this template](https://redirect.cs.umbc.edu/~mgrass2/cmsc345/Template_UI.doc))
 
 ### Navigation Diagram
-> Draw a diagram illustrating how the user can navigate from one screen to another. Here is an [example](https://creately.com/diagram/example/ikfqudv82/user-navigation-diagram-classic?r=v). It can be useful to label each symbol that represents a screen so that you can reference the screens in the next section or the rest of the document if necessary. Give a brief description of what the diagram represents.
+
+The following image represents the user experience as they go through the Puzzle Room program:
 
 <img width="80%" alt="Navigation Diagram" src="https://github.com/cs100/final-project-vlee084-bigna003-chakk001-mvasq094/assets/86755705/f2836463-6801-4e44-9c00-7de6994811f1">
 
+The player will start off in the Main Menu. Once they start the game, the program creates a Player object that contains an inventory system and keeps track of the current room that they are in. The program also builds the game map, which is a collection of interconnected rooms. The user is then sent to the Main Interface. Here, the program will tell the user what room they are currently in, as well as how to use the player controls. The interface contains three major functionalities: Inventory, Move Room, and Examine Room.
+
+The Inventory screen will allow the user to keep track of and observe all the items they've collected so far in their inventory.
+
+The Examine Room screens will allow the user to observe, interact with, and/or collect any items in the current room that they are in.
+
+The Move Room screen will allow the user to choose which room to switch to, provided that the passage to the adjacent room is unlocked.
+
+If the program detects that the player's current room is the EXIT room, the user is taken to the Victory Screen, and the game is complete. They can return to the main menu, and the map will reset. 
+
 ### Screen Layouts
-> Include the layout of each of your screens. The layout should describe the screen’s major components such as menus and prompts for user inputs, expected output, and buttons (if applicable). Explain what is on the layout, and the purpose of each menu item, button, etc. If many screens share the same layout, start by describing the general layout and then list the screens that will be using that layout and the differences between each of them.
 
 #### Main Menu
 <img width="60%" height="60%" alt="Main Menu" src="https://github.com/cs100/final-project-vlee084-bigna003-chakk001-mvasq094/assets/86755705/eb3aaef3-dab9-44f4-807d-c18f60645c7b">
@@ -56,7 +66,7 @@ This is the first screen that the user sees when starting the program. After the
 
 Every line that requires user input will start with >. Every user input will be represented in chars. Also, if at any point an invalid character is entered, the program doesn’t proceed until a valid character is read.
 
-#### User Interface
+#### Main Interface
 <img width="60%" height="60%" alt="Main Menu" src="https://github.com/cs100/final-project-vlee084-bigna003-chakk001-mvasq094/assets/86755705/f75f680e-2559-44e8-97e3-e572f9ee114e">
 
 This is the main interface that the user will interact with during the game. The screen outputs the room name and description that the player is in. 
