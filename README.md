@@ -106,9 +106,28 @@ The program will tell the user if the move was successful. If it is, the current
 Once the program detects if the player is in the EXIT room, the program will switch to the victory screen. The player has to simply enter S to complete the game and return to the main menu.
 
 ## Class Diagram
- > Include a **class diagram(s)** for your project and a **description** of the diagram(s). Your class diagram(s) should include all the main classes you plan for the project. This should be in sufficient detail that another group could pick up the project this point and successfully complete it. Use proper UML notation (as discussed in the course slides).
+
+The following diagram showcases the main classes that will be used in the project:
 
 <img width="100%" height="100%" alt="Class Diagram" src="https://github.com/cs100/final-project-vlee084-bigna003-chakk001-mvasq094/assets/86755705/b8677770-cde4-4062-abf0-aeab8ce362c0">
+
+Player: This class is a control class that the user will interact with throughout the course of the game. It will keep track of what room the player is currently at inside the map, while also managing an inventory system. Player will also deal largely with user input, as well as the three main functionalities of the program, which are moving around different rooms, opening the inventory, and examining the current room.
+
+Inventory: This class, which can only be used by a Player, manages a collection of GameObjects that the user can keep track of as they traverse through the map. There can be as many or as little GameObjects in Inventory, but the relationship between the inventory system and the Player is 1 to 1.
+
+Room: This class will largely make up the map of the program. They essentially act as the map's "nodes" that contain GameObjects, as well as doors that connect different rooms together. The user will have to traverse through different rooms in order to successfully finish the game.
+
+GameObject: These are essentially the building blocks to the puzzle element in our program. GameObjects are anything that can be observed by the player. They may provide clues or solutions, but they can also serve as obstacles to the player. GameObjects also have the ability to be modified/interacted with by the user so that new information can be extracted from it. Although many of our GameObjects will be contained inside rooms, they can also be collected by the user and stored inside of their inventory so that the player can access them in different rooms.
+
+Door: Doors are a special type of GameObject that contain a pointer to another room and have the ability to be locked or unlocked. These types of doors are unlocked by default. These serve as the main methods of player movement in the game.
+
+PuzzleDoor: These are special doors that will lock the player from progression unless they can solve a puzzle that unlocks the door upon completion. There will be a 1 to 1 relationship between a PuzzleDoor and a Puzzle.
+
+Puzzle: Puzzles are the main obstacles that will block player progress during the game. They can be affixed to GameObjects, particularly PuzzleDoors, so that the player cannot interact or unlock the object unless they complete its puzzle. Keep in mind that this generic Puzzle class is abstract, and different types of Puzzles will derive from it.
+
+KeypadPuzzle: This is a type of Puzzle that requires the user to enter a numeric passcode in order to solve it.
+
+Overall, this diagram represents the fundamental classes and mechanisms that will help our program function. Player, Inventory, Room, GameObject, and Puzzle all serve as the core part of our project. This comprehensive list and diagram may be updated to reflect additional classes that may be implemented, such as other kinds of Puzzles and GameObjects.
  
  > ## Phase III
  > You will need to schedule a check-in for the second scrum meeting with the same reader you had your first scrum meeting with (using Calendly). Your entire team must be present. This meeting will occur on Zoom and should be conducted by Wednesday of week 8.
