@@ -109,7 +109,7 @@ Once the program detects if the player is in the EXIT room, the program will swi
 
 The following diagram showcases the main classes that will be used in the project:
 
-<img width="100%" height="100%" alt="Class Diagram" src="https://github.com/cs100/final-project-vlee084-bigna003-chakk001-mvasq094/assets/86755705/b8677770-cde4-4062-abf0-aeab8ce362c0">
+<img width="100%" height="100%" alt="Class Diagram" src="https://github.com/cs100/final-project-vlee084-bigna003-chakk001-mvasq094/assets/86755705/ff0e9dc3-1235-48eb-a6e6-b6343eac681b">
 
 Player: This class is a control class that the user will interact with throughout the course of the game. It will keep track of what room the player is currently at inside the map, while also managing an inventory system. Player will also deal largely with user input, as well as the three main functionalities of the program, which are moving around different rooms, opening the inventory, and examining the current room.
 
