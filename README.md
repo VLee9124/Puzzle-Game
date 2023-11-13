@@ -117,11 +117,15 @@ Inventory: This class, which can only be used by a Player, manages a collection 
 
 Room: This class will largely make up the map of the program. They essentially act as the map's "nodes" that contain GameObjects, as well as doors that connect different rooms together. The user will have to traverse through different rooms in order to successfully finish the game.
 
-GameObject: These are essentially the building blocks to the puzzle element in our program. GameObjects are anything that can be observed by the player. They may provide clues or solutions, but they can also serve as obstacles to the player. GameObjects also have the ability to be modified/interacted with by the user so that new information can be extracted from it. Although many of our GameObjects will be contained inside rooms, they can also be collected by the user and stored inside of their inventory so that the player can access them in different rooms.
+GameObject: These are essentially the building blocks to the puzzle element in our program. GameObjects are anything that can be observed/interacted by the player. They may provide clues or solutions, but they can also serve as obstacles to the player. GameObjects also have the ability to be modified/interacted with by the user so that new information can be extracted from it. Many of our GameObjects will be contained inside rooms.
 
-Door: Doors are a special type of GameObject that contain a pointer to another room and have the ability to be locked or unlocked. These types of doors are unlocked by default. These serve as the main methods of player movement in the game.
+InventoryObject: These are special GameObjects that can be taken from a room and collected by the player to store inside of their inventory.
 
-PuzzleDoor: These are special doors that will lock the player from progression unless they can solve a puzzle that unlocks the door upon completion. There will be a 1 to 1 relationship between a PuzzleDoor and a Puzzle.
+Door: Doors are a special type of GameObject that contain a pointer to another room. These types of doors are unlocked by default. These serve as the main methods of player movement in the game.
+
+LockedObject: These special objects cannot be interacted with unless the user can solve their associated puzzle that will unlock upon completion.
+
+LockedDoor: Derived from both Door and LockedObject, the user cannot interact with or access its adjacent door unless they complete their associated puzzle.
 
 Puzzle: Puzzles are the main obstacles that will block player progress during the game. They can be affixed to GameObjects, particularly PuzzleDoors, so that the player cannot interact or unlock the object unless they complete its puzzle. Keep in mind that this generic Puzzle class is abstract, and different types of Puzzles will derive from it.
 
