@@ -3,18 +3,18 @@
 
 class Room {
     private:
-        vector<gameObject*> objectList;
+        vector<GameObject*> objectList;
         vector<Door*> doorList;
         string roomName;
         string roomDesc;
     public:
-        Room(string name);
-        string getAdjacentRooms();
-        string getAllObjects();
-        string getDesc();
+        Room(string name, string desc);
+        vector<GameObject*> getAllObjects();
+        vector<Door*> getAdjacentRooms();
         string getName();
-        void removeObject(GameObject* targetObj);
+        string getDesc();
         void addObject(GameObject* newObj);
+        void removeObject(GameObject* targetObj);
         void addDoor(Door* newDoor);
 };
 
