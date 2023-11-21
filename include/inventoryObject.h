@@ -1,33 +1,15 @@
-#ifndef INVENTORY_OBJECT_H
-#define INVENTORY_OBJECT_H
+#pragma once
 
-#include <string>
-#include <vector>
 #include "gameObject.h"
-using namespace std;
+#include "inventory.h"
 
-/*An interactable object that can be collected and stored in the inventory.*/
-class inventoryObject : public gameObject
+class InventoryObject : public gameObject
 {
 private:
-  bool collected = false;
   string collectionMessage;
 
 public:
-  inventoryObject(string name, string description, string interaction) : gameObject(name, description, interaction) {}
-
-  // Getters and setters
-  string getCollectionMessage() { return collectionMessage; }
-  void setCollectionMessage(string s) { collectionMessage = s; }
-
-  // Inventory object functions
-
-  // void collect();
-  
-  virtual void interact() {
-    // collect();
-    gameObject::interact();
-  }
+  InventoryObject(string name, string description, string interaction, string collectionMessage);
+  void interact() override;
+  void collect();
 };
-
-#endif
