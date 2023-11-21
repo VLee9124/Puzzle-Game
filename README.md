@@ -109,7 +109,7 @@ Once the program detects if the player is in the EXIT room, the program will swi
 
 The following diagram showcases the main classes that will be used in the project:
 
-<img width="100%" height="100%" alt="Class Diagram" src="https://github.com/cs100/final-project-vlee084-bigna003-chakk001-mvasq094/assets/86755705/b8677770-cde4-4062-abf0-aeab8ce362c0">
+<img width="100%" height="100%" alt="Class Diagram" src="https://github.com/cs100/final-project-vlee084-bigna003-chakk001-mvasq094/assets/86755705/ff0e9dc3-1235-48eb-a6e6-b6343eac681b">
 
 Player: This class is a control class that the user will interact with throughout the course of the game. It will keep track of what room the player is currently at inside the map, while also managing an inventory system. Player will also deal largely with user input, as well as the three main functionalities of the program, which are moving around different rooms, opening the inventory, and examining the current room.
 
@@ -117,18 +117,26 @@ Inventory: This class, which can only be used by a Player, manages a collection 
 
 Room: This class will largely make up the map of the program. They essentially act as the map's "nodes" that contain GameObjects, as well as doors that connect different rooms together. The user will have to traverse through different rooms in order to successfully finish the game.
 
-GameObject: These are essentially the building blocks to the puzzle element in our program. GameObjects are anything that can be observed by the player. They may provide clues or solutions, but they can also serve as obstacles to the player. GameObjects also have the ability to be modified/interacted with by the user so that new information can be extracted from it. Although many of our GameObjects will be contained inside rooms, they can also be collected by the user and stored inside of their inventory so that the player can access them in different rooms.
+GameObject: These are essentially the building blocks to the puzzle element in our program. GameObjects are anything that can be observed/interacted by the player. They may provide clues or solutions, but they can also serve as obstacles to the player. GameObjects also have the ability to be modified/interacted with by the user so that new information can be extracted from it. Many of our GameObjects will be contained inside rooms.
 
-Door: Doors are a special type of GameObject that contain a pointer to another room and have the ability to be locked or unlocked. These types of doors are unlocked by default. These serve as the main methods of player movement in the game.
+InventoryObject: These are special GameObjects that can be taken from a room and collected by the player to store inside of their inventory.
 
-PuzzleDoor: These are special doors that will lock the player from progression unless they can solve a puzzle that unlocks the door upon completion. There will be a 1 to 1 relationship between a PuzzleDoor and a Puzzle.
+Door: Doors are a special type of GameObject that contain a pointer to another room. These types of doors are unlocked by default. These serve as the main methods of player movement in the game.
+
+LockedObject: These special objects cannot be interacted with unless the user can solve their associated puzzle that will unlock upon completion.
+
+LockedDoor: Derived from both Door and LockedObject, the user cannot interact with or access its adjacent door unless they complete their associated puzzle.
 
 Puzzle: Puzzles are the main obstacles that will block player progress during the game. They can be affixed to GameObjects, particularly PuzzleDoors, so that the player cannot interact or unlock the object unless they complete its puzzle. Keep in mind that this generic Puzzle class is abstract, and different types of Puzzles will derive from it.
 
 KeypadPuzzle: This is a type of Puzzle that requires the user to enter a numeric passcode in order to solve it.
 
 Overall, this diagram represents the fundamental classes and mechanisms that will help our program function. Player, Inventory, Room, GameObject, and Puzzle all serve as the core part of our project. This comprehensive list and diagram may be updated to reflect additional classes that may be implemented, such as other kinds of Puzzles and GameObjects.
- 
+
+### Updates To Class Diagram
+* 2023/11/13: We found that the original GameObject class had violated the Interface Segregation Principle, as well as the Single Responsibility Principle. This is because GameObject had functions checking if the object was collectable, when all that GameObject needs are the appropriate getters/setters and a general interact() function. This makes GameObject have two responsibilities, and checkIfCollectable() only applies to some special objects. Thus, we created a separate interface for InventoryObjects that only have to deal with collection. This way, we don't have to implement the collection functions for all subtypes, making code maintenance easier for GameObjects.
+* 2023/11/14: We realized that Door violates the Single Responsibility Priniciple since it has two tasks - checking if the door is locked and getting the adjacent room. Thus, we created another subtype of GameObject called LockedObject that will deal with any object that is locked. Door now doesn't have a checkIfLocked() function anymore, and we also updated the LockedDoor class to extend from both Door and LockedObject. Because of this change, Door class is more stable and easily defined, and we can also create non-Door objects that can also be locked, making the locked feature more applicable.
+
  > ## Phase III
  > You will need to schedule a check-in for the second scrum meeting with the same reader you had your first scrum meeting with (using Calendly). Your entire team must be present. This meeting will occur on Zoom and should be conducted by Wednesday of week 8.
  
