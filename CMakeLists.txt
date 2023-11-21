@@ -5,10 +5,6 @@ add_subdirectory(googletest)
 
 # For each new feature branch, add a new executable with the appropriate directories. 
 
-# add_executable(TEST_EXECUTABLE_NAME
-#     <DIRECTORIES>
-# )
-
 add_executable(runObjectTests
     test/testObjects.cpp 
     src/gameObject.cpp
