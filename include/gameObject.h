@@ -19,20 +19,9 @@ public:
   string getDesc();
   string getInteraction();
 
-  void setName();
-  void setDesc();
-  void setInteraction();
+  void setName(string name);
+  void setDesc(string description);
+  void setInteraction(string interaction);
 
   void interact();
-};
-
-class InventoryObject : public gameObject
-{
-private:
-  string collectionMessage;
-
-public:
-  InventoryObject(string name, string description, string interaction, string collectionMessage);
-  void interact() override;
-  void collect();
 };
