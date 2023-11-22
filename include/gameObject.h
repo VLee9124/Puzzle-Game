@@ -8,7 +8,7 @@ using namespace std;
 
 class gameObject
 {
-private:
+protected:
   string name;
   string description;
   string interaction;
@@ -20,9 +20,9 @@ public:
   string getDesc();
   string getInteraction();
 
-  void setName(string name);
-  void setDesc(string description);
-  void setInteraction(string interaction);
+  void setName(string);
+  void setDesc(string);
+  void setInteraction(string);
 
-  void interact();
+  virtual void interact();
 };

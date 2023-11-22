@@ -2,12 +2,7 @@
 
 // Gameobject functions here:
 
-gameObject::gameObject(string objectName, string descriptionMsg, string interactionMsg)
-{
-  name = objectName;
-  description = descriptionMsg;
-  interaction = interactionMsg;
-}
+gameObject::gameObject(string name, string description, string interaction) : name(name), description(description), interaction(interaction) {}
 
 void gameObject::setName(string objectName)
 {

@@ -1,16 +1,21 @@
-InventoryObject::InventoryObject(string name, string description, string interaction, string collectionMessage);
+#include "../include/inventoryObject.h"
 
-void InventoryObject::interact()
+inventoryObject::inventoryObject(string name, string description, string interaction, string collectionMessage) : gameObject(name, description, interaction), collectionMessage(collectionMessage), collected(false) {}
+
+void inventoryObject::interact()
 {
   description = interaction;
   collect();
 }
 
-void InventoryObject::collect(Inventory *plrInventory)
+void inventoryObject::collect()
 {
   if (!collected)
   {
-    plrInventory->addObject(this);
     collected = true;
   }
+}
+
+string inventoryObject::getCollectMsg() {
+  return collectionMessage;
 }

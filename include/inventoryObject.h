@@ -1,15 +1,16 @@
 #pragma once
 
 #include "gameObject.h"
-#include "inventory.h"
 
-class InventoryObject : public gameObject
+class inventoryObject : public gameObject
 {
 private:
   string collectionMessage;
+  bool collected;
 
 public:
-  InventoryObject(string name, string description, string interaction, string collectionMessage);
+  inventoryObject(string, string, string, string);
   void interact() override;
   void collect();
+  string getCollectMsg();
 };
