@@ -136,27 +136,6 @@ Overall, this diagram represents the fundamental classes and mechanisms that wil
 ### Updates To Class Diagram
 * 2023/11/13: We found that the original GameObject class had violated the Interface Segregation Principle, as well as the Single Responsibility Principle. This is because GameObject had functions checking if the object was collectable, when all that GameObject needs are the appropriate getters/setters and a general interact() function. This makes GameObject have two responsibilities, and checkIfCollectable() only applies to some special objects. Thus, we created a separate interface for InventoryObjects that only have to deal with collection. This way, we don't have to implement the collection functions for all subtypes, making code maintenance easier for GameObjects.
 * 2023/11/14: We realized that Door violates the Single Responsibility Priniciple since it has two tasks - checking if the door is locked and getting the adjacent room. Thus, we created another subtype of GameObject called LockedObject that will deal with any object that is locked. Door now doesn't have a checkIfLocked() function anymore, and we also updated the LockedDoor class to extend from both Door and LockedObject. Because of this change, Door class is more stable and easily defined, and we can also create non-Door objects that can also be locked, making the locked feature more applicable.
-
- > ## Phase III
- > You will need to schedule a check-in for the second scrum meeting with the same reader you had your first scrum meeting with (using Calendly). Your entire team must be present. This meeting will occur on Zoom and should be conducted by Wednesday of week 8.
- 
- > BEFORE the meeting you should do the following:
- > * Update your class diagram from Phase II to include any feedback you received from your TA/grader.
- > * Considering the SOLID design principles, reflect back on your class diagram and think about how you can use the SOLID principles to improve your design. You should then update the README.md file by adding the following:
- >   * A new class diagram incorporating your changes after considering the SOLID principles.
- >   * For each update in your class diagram, you must explain in 3-4 sentences:
- >     * What SOLID principle(s) did you apply?
- >     * How did you apply it? i.e. describe the change.
- >     * How did this change help you write better code?
- > * Perform a new sprint plan like you did in Phase II.
- > * You should also make sure that your README file (and Project board) are up-to-date reflecting the current status of your project and the most recent class diagram. Previous versions of the README file should still be visible through your commit history.
- 
-> During the meeting with your reader you will discuss: 
- > * How effective your last sprint was (each member should talk about what they did)
- > * Any tasks that did not get completed last sprint, and how you took them into consideration for this sprint
- > * Any bugs you've identified and created issues for during the sprint. Do you plan on fixing them in the next sprint or are they lower priority?
- > * What tasks you are planning for this next sprint.
-
  
  > ## Final deliverable
  > All group members will give a demo to the reader during lab time. ou should schedule your demo on Calendly with the same reader who took your second scrum meeting. The reader will check the demo and the project GitHub repository and ask a few questions to all the team members. 
