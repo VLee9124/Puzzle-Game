@@ -1,6 +1,12 @@
 #ifndef ROOM_HPP
 #define ROOM_HPP
 
+#include <string>
+#include <vector>
+#include <algorithm>
+#include "gameObject.hpp"
+#include "door.hpp"
+
 class Room {
     private:
         vector<GameObject*> objectList;
