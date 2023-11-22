@@ -109,7 +109,7 @@ Once the program detects if the player is in the EXIT room, the program will swi
 
 The following diagram showcases the main classes that will be used in the project:
 
-<img width="100%" height="100%" alt="Class Diagram" src="https://github.com/cs100/final-project-vlee084-bigna003-chakk001-mvasq094/assets/86755705/ff0e9dc3-1235-48eb-a6e6-b6343eac681b">
+<img width="100%" height="100%" alt="Class Diagram" src="https://github.com/cs100/final-project-vlee084-bigna003-chakk001-mvasq094/assets/111732595/a9b37057-b2b7-4a19-8774-e63c69c6340f">
 
 Player: This class is a control class that the user will interact with throughout the course of the game. It will keep track of what room the player is currently at inside the map, while also managing an inventory system. Player will also deal largely with user input, as well as the three main functionalities of the program, which are moving around different rooms, opening the inventory, and examining the current room.
 
@@ -134,6 +134,10 @@ KeypadPuzzle: This is a type of Puzzle that requires the user to enter a numeric
 Overall, this diagram represents the fundamental classes and mechanisms that will help our program function. Player, Inventory, Room, GameObject, and Puzzle all serve as the core part of our project. This comprehensive list and diagram may be updated to reflect additional classes that may be implemented, such as other kinds of Puzzles and GameObjects.
 
 ### Updating class diagram with SOLID principles
+For reference, our old class diagram can be found here:
+
+<img width="100%" height="100%" alt="Class Diagram" src="https://github.com/cs100/final-project-vlee084-bigna003-chakk001-mvasq094/assets/111732595/81e55e41-17bd-425a-9f9e-07575ea0a01b">
+
 * 2023/11/13: We found that the original GameObject class had violated the Interface Segregation Principle, as well as the Single Responsibility Principle. This is because GameObject had functions checking if the object was collectable, when all that GameObject needs are the appropriate getters/setters and a general interact() function. This makes GameObject have two responsibilities, and checkIfCollectable() only applies to some special objects. Thus, we created a separate interface for InventoryObjects that only have to deal with collection. This way, we don't have to implement the collection functions for all subtypes, making code maintenance easier for GameObjects.
 * 2023/11/14: We realized that Door violates the Single Responsibility Priniciple since it has two tasks - checking if the door is locked and getting the adjacent room. Thus, we created another subtype of GameObject called LockedObject that will deal with any object that is locked. Door now doesn't have a checkIfLocked() function anymore, and we also updated the LockedDoor class to extend from both Door and LockedObject. Because of this change, Door class is more stable and easily defined, and we can also create non-Door objects that can also be locked, making the locked feature more applicable.
 * 2023/11/15: The Player class had violated the Single Responsibility Principle since it tried to be an entity that controls the current room, as well as an interface that outputs the "screens" at the same time. To solve this, the outputting responsibility will be done by a different class called GameTerminal, which fully manages the game loop. This way, Player just has to deal with keeping track of the current room, and we also separate our I/O classes from the rest of our program, which makes our code more readable and easier to maintain.
