@@ -1,33 +1,34 @@
 #include "../header/room.hpp"
 
-Room::Room(string name) {
+Room::Room(string name, string desc) {
     this->roomName = name;
+    this->roomDesc = desc;
 }
 
-string Room::getAdjacentRooms() {
-   
+vector<GameObject*> Room::getAllObjects() {
+    return this->objectList;
 }
 
-string Room::getAllObjects() {
-
-}
-
-string Room::getDesc() {
-    return this->roomDesc;
+vector<Door*> Room::getAdjacentRooms() {
+   return this->doorList;
 }
 
 string Room::getName() {
     return this->roomName;
 }
 
-void Room::removeObject(GameObject* targetObj) {
-    auto it = find(this->objectList.begin(), this->objectList.end(), targetObj);
-    if(it != this->objectList.end())
-        this->objectList.erase(it);
+string Room::getDesc() {
+    return this->roomDesc;
 }
 
 void Room::addObject(GameObject* newObj) {
     this->objectList.push_back(newObj);
+}
+
+void Room::removeObject(GameObject* targetObj) {
+    GameObject* it = find(this->objectList.begin(), this->objectList.end(), targetObj);
+    if(it != this->objectList.end())
+        this->objectList.erase(it);
 }
 
 void Room::addDoor(Door* newDoor) {
