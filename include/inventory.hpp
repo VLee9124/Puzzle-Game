@@ -17,7 +17,7 @@ class inventory {
 
         // Accessors
         inventoryObject* getItemFromInventory(int) const;
-        string getInventoryContents() const;
+        vector<inventoryObject*> getInventoryContents() const;
         string getItemDescription(int) const;
 
         // Helper function

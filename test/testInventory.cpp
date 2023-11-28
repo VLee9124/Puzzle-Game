@@ -13,26 +13,28 @@ TEST(Constructor, TestDefaultConstructor) {
 
 TEST(InventoryContents, TestInventoryNoItems) {
     inventory myInventory;
+    vector<inventoryObject*> expectedObjs;
 
     ASSERT_NO_THROW(myInventory);
-    EXPECT_EQ(myInventory.getInventoryContents(), "");
+    EXPECT_EQ(myInventory.getInventoryContents(), expectedObjs);
 }
 
 // Tests the contents of the inventory if it has one item
 TEST(InventoryContents, TestInventoryOneItem) {
     inventory myInventory;
     inventoryObject* Book = new inventoryObject("Clue Book", "An unopened book. What could be written inside?", "After opening the book you collected, you find that the first page reads '1294'.", "You picked up the book.");
+    vector<inventoryObject*> expectedObjs;
 
     ASSERT_NO_THROW(myInventory);
     ASSERT_NO_THROW(Book);
 
     Book->interact();
     myInventory.addItem(Book);
+    expectedObjs.push_back(Book);
 
     EXPECT_NO_THROW(myInventory.getInventoryContents());
 
-    string expectedOutput = "1. Clue Book\n";
-    EXPECT_EQ(myInventory.getInventoryContents(), expectedOutput);
+    EXPECT_EQ(myInventory.getInventoryContents(), expectedObjs);
 }
 
 // Tests the contents of the inventory if it has multiple objects
@@ -40,6 +42,7 @@ TEST(InventoryContents, TestInventoryMultipleItems) {
     inventory myInventory;
     inventoryObject* Book = new inventoryObject("Clue Book", "An unopened book. What could be written inside?", "After opening the book you collected, you find that the first page reads '1294'.", "You picked up the book.");
     inventoryObject* Note = new inventoryObject("Faded Note", "A crumpled note.", "After uncrumpling the note you have, you read the note, which reads: '444-444-4444'.", "You picked up a note with scribbled writing on it.");
+    vector<inventoryObject*> expectedObjs;
 
     ASSERT_NO_THROW(myInventory);
     ASSERT_NO_THROW(Book);
@@ -47,14 +50,15 @@ TEST(InventoryContents, TestInventoryMultipleItems) {
 
     Book->interact();
     myInventory.addItem(Book);
+    expectedObjs.push_back(Book);
     
     Note->interact();
     myInventory.addItem(Note);
+    expectedObjs.push_back(Note);
 
     EXPECT_NO_THROW(myInventory.getInventoryContents());
 
-    string expectedOutput = "1. Clue Book\n2. Faded Note\n";
-    EXPECT_EQ(myInventory.getInventoryContents(), expectedOutput);
+    EXPECT_EQ(myInventory.getInventoryContents(), expectedObjs);
 }
 
 // Tests printing out the first item's description

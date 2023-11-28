@@ -14,7 +14,7 @@ add_executable(runObjectTests
     src/gameObject.cpp
 )
 
-add_executable(runInventoryClassObjects
+add_executable(runInventoryClassTests
     test/testInventory.cpp
     src/gameObject.cpp
     src/inventoryObject.cpp
@@ -24,5 +24,5 @@ add_executable(runInventoryClassObjects
 TARGET_LINK_LIBRARIES(runObjectTests gtest)
 TARGET_COMPILE_DEFINITIONS(runObjectTests PRIVATE gtest_disable_pthreads=ON)
 
-TARGET_LINK_LIBRARIES(runInventoryClassObjects gtest)
-TARGET_COMPILE_DEFINITIONS(runInventoryClassObjects PRIVATE gtest_disable_pthreads=ON)
+TARGET_LINK_LIBRARIES(runInventoryClassTests gtest)
+TARGET_COMPILE_DEFINITIONS(runInventoryClassTests PRIVATE gtest_disable_pthreads=ON)
