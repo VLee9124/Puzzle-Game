@@ -3,7 +3,8 @@
 
 #include <string>
 #include "gameObject.hpp"
-#include "room.hpp"
+
+class Room;
 
 class Door : public gameObject {
     private:

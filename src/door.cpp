@@ -1,4 +1,5 @@
 #include "../header/door.hpp"
+#include "../header/room.hpp"
 
 Door::Door(Room* adjRoom) {
     this->adjacentRoom = adjRoom;
