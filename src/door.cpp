@@ -1,22 +1,20 @@
-#include "../header/door.hpp"
+#include "../include/door.hpp"
 
-Door::Door(Room* adjRoom) {
-    this->adjacentRoom = adjRoom;
+Door::Door(string name, string description, string interaction, Room* adjRoom) : gameObject(name, description, interaction), adjacentRoom(adjRoom) {}
+
+Room* Door::getAdjacentRoom() {
+    return adjacentRoom;
 }
 
-Room* getAdjacentRoom() {
-    return this->adjacentRoom;
-}
-
-void setOpen(bool val) {
-    this->isOpen = val;
+void Door::setOpen(bool val) {
+    isOpen = val;
 }
 
 
-bool getOpen() {
-    return this->isOpen;
+bool Door::getOpen() {
+    return isOpen;
 }
 
-void interact() override {
+void Door::interact() {
     
 }

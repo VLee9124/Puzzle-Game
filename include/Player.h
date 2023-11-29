@@ -1,8 +1,8 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-#include "Room.h"
-#include "Inventory.h"
+#include "room.hpp"
+#include "inventory.hpp"
 
 class Player {
 public:

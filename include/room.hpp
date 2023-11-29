@@ -1,27 +1,25 @@
-#ifndef ROOM_HPP
-#define ROOM_HPP
+#pragma once
 
-#include <string>
-#include <vector>
-#include <algorithm>
-#include "gameObject.hpp"
+#include "gameObject.h"
 #include "door.hpp"
+#include <algorithm>
+#include <stdexcept>
 
 class Room {
     private:
-        vector<GameObject*> objectList;
+        vector<gameObject*> objectList;
         vector<Door*> doorList;
         string roomName;
         string roomDesc;
     public:
         Room(string name, string desc);
-        vector<GameObject*> getAllObjects();
         vector<Door*> getAdjacentRooms();
-        string getName();
+        vector<gameObject*> getAllObjects();
         string getDesc();
-        void addObject(GameObject* newObj);
-        void removeObject(GameObject* targetObj);
+        string getName();
+        gameObject* getObject(int index);
+        bool emptyRoom();
+        void removeObject(int itemIndex);
+        void addObject(gameObject* newObj);
         void addDoor(Door* newDoor);
 };
-
-#endif /* ROOM_HPP */

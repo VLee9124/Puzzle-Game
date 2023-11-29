@@ -1,5 +1,5 @@
 #include "gtest/gtest.h"
-#include "../header/room.hpp"
+#include "../include/room.hpp"
 
 TEST(RoomConstructorTests, TestName) {
     Room* room = new Room("name", "desc");
@@ -14,27 +14,27 @@ TEST(RoomConstructorTests, TestDesc) {
 
 TEST(RoomObjectTests, TestAddObject) {
     Room* room = new Room("name", "desc");
-    GameObject* newObj = new GameObject("name", "desc", "interaction");
-    room.addObject(newObj);
-    EXPECT_EQ(room->objectList[0], newObj);
+    gameObject* newObj = new gameObject("name", "desc", "interaction");
+    room->addObject(newObj);
+    EXPECT_EQ(room->getObject(0), newObj);
     delete room;
     delete newObj;
 }
 TEST(RoomObjectTests, TestRemoveObject) {
     Room* room = new Room("name", "desc");
-    GameObject* newObj = new GameObject("name", "desc", "interaction");
-    room.addObject(newObj);
-    GameObject* targetObj = newObj;
-    room.removeObject(targetObj);
-    EXPECT_TRUE(room->objectList.empty());
+    gameObject* newObj = new gameObject("name", "desc", "interaction");
+    room->addObject(newObj);
+    gameObject* targetObj = newObj;
+    room->removeObject(0);
+    EXPECT_TRUE(room->emptyRoom());
     delete room;
-    delete newObj;
 }
 
 TEST(RoomDoorTests, TestAddDoor) {
     Room* room = new Room("name", "desc");
-    Door* newDoor = new Door(room);
-    EXPECT_EQ(room->doorList[0], newDoor);
+    Door* newDoor = new Door("name", "desc", "interaction", room);
+    room->addObject(newDoor);
+    EXPECT_EQ(room->getObject(0), newDoor);
     delete room;
     delete newDoor;
 }
