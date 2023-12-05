@@ -4,7 +4,7 @@
 
 using namespace std;
 
-// Testing if the constructor works
+// Tests if the constructor works
 TEST(Constructor, TestDefaultConstructor) {
     inventory myInventory;
 
