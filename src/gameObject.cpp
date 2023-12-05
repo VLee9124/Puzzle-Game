@@ -1,4 +1,4 @@
-#include "../include/gameObject.h"
+#include "../include/gameObject.hpp"
 
 // Gameobject functions here:
 
