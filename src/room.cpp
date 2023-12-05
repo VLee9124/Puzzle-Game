@@ -33,10 +33,6 @@ void Room::removeObject(int itemIndex) {
     gameObject* victimObject = objectList.at(itemIndex);
     objectList.erase(objectList.begin() + itemIndex);
     delete victimObject;
-
-    // gameObject* it = find(this->objectList.begin(), this->objectList.end(), targetObj);
-    // if(it != this->objectList.end())
-    //     this->objectList.erase(it);
 }
 
 void Room::addDoor(Door* newDoor) {
