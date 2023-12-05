@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-#include "../include/gameObject.h"
+#include "../include/gameObject.hpp"
 
 // Constructor tests
 
