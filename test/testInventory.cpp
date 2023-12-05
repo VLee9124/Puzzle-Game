@@ -5,13 +5,13 @@
 using namespace std;
 
 // Testing if the constructor works
-TEST(Constructor, TestDefaultConstructor) {
+TEST(InventoryConstructor, TestDefault) {
     inventory myInventory;
 
     EXPECT_NO_THROW(myInventory);
 }
 
-TEST(InventoryContents, TestInventoryNoItems) {
+TEST(InventoryContents, TestNoItems) {
     inventory myInventory;
     vector<inventoryObject*> expectedObjs;
 
@@ -20,7 +20,7 @@ TEST(InventoryContents, TestInventoryNoItems) {
 }
 
 // Tests the contents of the inventory if it has one item
-TEST(InventoryContents, TestInventoryOneItem) {
+TEST(InventoryContents, TestOneItem) {
     inventory myInventory;
     inventoryObject* Book = new inventoryObject("Clue Book", "An unopened book. What could be written inside?", "After opening the book you collected, you find that the first page reads '1294'.", "You picked up the book.");
     vector<inventoryObject*> expectedObjs;
@@ -38,7 +38,7 @@ TEST(InventoryContents, TestInventoryOneItem) {
 }
 
 // Tests the contents of the inventory if it has multiple objects
-TEST(InventoryContents, TestInventoryMultipleItems) {
+TEST(InventoryContents, TestMultipleItems) {
     inventory myInventory;
     inventoryObject* Book = new inventoryObject("Clue Book", "An unopened book. What could be written inside?", "After opening the book you collected, you find that the first page reads '1294'.", "You picked up the book.");
     inventoryObject* Note = new inventoryObject("Faded Note", "A crumpled note.", "After uncrumpling the note you have, you read the note, which reads: '444-444-4444'.", "You picked up a note with scribbled writing on it.");
@@ -62,7 +62,7 @@ TEST(InventoryContents, TestInventoryMultipleItems) {
 }
 
 // Tests printing out the first item's description
-TEST(ItemDescription, TestItemDescriptionIndexZero) {
+TEST(InventoryItemDescription, TestIndexZero) {
     inventory myInventory;
     inventoryObject* Note = new inventoryObject("Faded Note", "A crumpled note.", "After uncrumpling the note you have, you read the note, which reads: '444-444-4444'.", "You picked up a note with scribbled writing on it.");
     
@@ -79,7 +79,7 @@ TEST(ItemDescription, TestItemDescriptionIndexZero) {
 }
 
 // Tests printing out any item's description given an index
-TEST(ItemDescription, TestItemDescriptionIndexNonzero) {
+TEST(InventoryItemDescription, TestIndexNonzero) {
     inventory myInventory;
     inventoryObject* Bottle = new inventoryObject("Water Bottle", "A closed 500 mL water bottle.", "A 500mL water bottle you collected. It appears to be halfway full.", "You picked up the bottle.");
     inventoryObject* RedCoin = new inventoryObject("Red Coin", "A small red coin with some writing on it.", "A small red coin you picked up. It reads '4' on one side and 'D' on the other.", "You picked up the red coin.");
@@ -105,13 +105,13 @@ TEST(ItemDescription, TestItemDescriptionIndexNonzero) {
     EXPECT_EQ(myInventory.getItemDescription(2), expectedOutput);
 }
 
-TEST(ItemDescription, TestItemDescriptionOutOfRange) {
+TEST(InventoryItemDescription, TestOutOfRange) {
     inventory myInventory;
 
     EXPECT_THROW(myInventory.getItemDescription(0), runtime_error);
 }
 
-TEST(GetItem, OneItemInInventory) {
+TEST(InventoryGetItem, OneItem) {
     inventory myInventory;
     inventoryObject* Bottle = new inventoryObject("Water Bottle", "A closed 500 mL water bottle.", "A 500mL water bottle you collected. It appears to be halfway full.", "You picked up the bottle.");
 
@@ -124,7 +124,7 @@ TEST(GetItem, OneItemInInventory) {
     EXPECT_EQ(myInventory.getItemFromInventory(0), Bottle);
 }
 
-TEST(GetItem, MultipleItemsInInventory) {
+TEST(InventoryGetItem, MultipleItems) {
     inventory myInventory;
     inventoryObject* RedCoin = new inventoryObject("Red Coin", "A small red coin with some writing on it.", "A small red coin you picked up. It reads '4' on one side and 'D' on the other.", "You picked up the red coin.");
     inventoryObject* GreenCoin = new inventoryObject("Green Coin", "A small green coin with some writing on it.", "A small red coin you picked up. It reads '9' on one side and 'F' on the other.", "You picked up the green coin.");
@@ -138,7 +138,7 @@ TEST(GetItem, MultipleItemsInInventory) {
     EXPECT_EQ(myInventory.getItemFromInventory(1), GreenCoin);
 }
 
-TEST(GetItem, OutOfRangeError) {
+TEST(InventoryGetItem, OutOfRangeError) {
     inventory myInventory;
     inventoryObject* RedCoin = new inventoryObject("Red Coin", "A small red coin with some writing on it.", "A small red coin you picked up. It reads '4' on one side and 'D' on the other.", "You picked up the red coin.");
     inventoryObject* GreenCoin = new inventoryObject("Green Coin", "A small green coin with some writing on it.", "A small red coin you picked up. It reads '9' on one side and 'F' on the other.", "You picked up the green coin.");
@@ -152,7 +152,7 @@ TEST(GetItem, OutOfRangeError) {
     EXPECT_THROW(myInventory.getItemFromInventory(3), runtime_error);
 }
 
-TEST(RemoveItem, RemoveOnlyItem) {
+TEST(InventoryRemoveItem, RemoveOnlyItem) {
     inventory myInventory;
     inventoryObject* Book = new inventoryObject("Clue Book", "An unopened book. What could be written inside?", "After opening the book you collected, you find that the first page reads '1294'.", "You picked up the book.");
 
@@ -166,7 +166,7 @@ TEST(RemoveItem, RemoveOnlyItem) {
     EXPECT_EQ(myInventory.itemCount(), 0);
 }
 
-TEST(RemoveItem, RemoveMultipleItems) {
+TEST(InventoryRemoveItem, RemoveMultipleItems) {
     inventory myInventory;
     inventoryObject* Bottle = new inventoryObject("Water Bottle", "A closed 500 mL water bottle.", "A 500mL water bottle you collected. It appears to be halfway full.", "You picked up the bottle.");
     inventoryObject* RedCoin = new inventoryObject("Red Coin", "A small red coin with some writing on it.", "A small red coin you picked up. It reads '4' on one side and 'D' on the other.", "You picked up the red coin.");
@@ -190,7 +190,7 @@ TEST(RemoveItem, RemoveMultipleItems) {
     EXPECT_EQ(myInventory.getItemFromInventory(0), GreenCoin);
 }
 
-TEST(RemoveItem, UnderflowError) {
+TEST(InventoryRemoveItem, UnderflowError) {
     inventory myInventory;
 
     EXPECT_THROW(myInventory.removeItem(0), runtime_error);

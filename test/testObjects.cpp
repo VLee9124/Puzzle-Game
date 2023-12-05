@@ -4,7 +4,7 @@
 
 // Constructor tests
 
-TEST(ConstructorTests, testNormalStrings)
+TEST(ObjectConstructor, testNormalStrings)
 {
   string name = "Note";
   string description = "An old piece of paper lies in the corner of the room.";
@@ -13,7 +13,7 @@ TEST(ConstructorTests, testNormalStrings)
   EXPECT_NO_THROW(gameObject(name, description, interaction));
 }
 
-TEST(ConstructorTests, testEmptyStrings)
+TEST(ObjectConstructor, testEmptyStrings)
 {
   string name = "";
   string description = "";
@@ -22,7 +22,7 @@ TEST(ConstructorTests, testEmptyStrings)
   EXPECT_NO_THROW(gameObject(name, description, interaction));
 }
 
-TEST(ConstructorTests, testLongStrings)
+TEST(ObjectConstructor, testLongStrings)
 {
   string name = "Blah blah blah blah Blah blah blah blah Blah blah blah blah Blah blah blah blah Blah blah blah blah Blah blah blah blah Blah blah blah blah Blah blah blah blah Blah blah blah blah Blah blah blah blah Blah blah blah blah Blah blah blah blah Blah blah blah blah Blah blah blah blah Blah blah blah blah Blah blah blah blah Blah blah blah blah Blah blah blah blah Blah blah blah blah";
   string description = "Blah blah blah blah Blah blah blah blah Blah blah blah blah Blah blah blah blah Blah blah blah blah Blah blah blah blah Blah blah blah blah Blah blah blah blah Blah blah blah blah Blah blah blah blah Blah blah blah blah Blah blah blah blah Blah blah blah blah Blah blah blah blah Blah blah blah blah Blah blah blah blah Blah blah blah blah Blah blah blah blah Blah blah blah blah";
@@ -33,7 +33,7 @@ TEST(ConstructorTests, testLongStrings)
 
 // Getter tests
 
-TEST(GetNameTests, testName)
+TEST(ObjectGetName, testName)
 {
   string name = "Ultraviolet light";
   string description = "";
@@ -44,7 +44,7 @@ TEST(GetNameTests, testName)
   EXPECT_EQ(item.getName(), name);
 }
 
-TEST(GetNameTests, testEmptyName)
+TEST(ObjectGetName, testEmptyName)
 {
   string name = "";
   string description = "";
@@ -55,7 +55,7 @@ TEST(GetNameTests, testEmptyName)
   EXPECT_EQ(item.getName(), name);
 }
 
-TEST(GetNameTests, testLongName)
+TEST(ObjectGetName, testLongName)
 {
   string name = "This object has a very long name that exceeds the typical length of an object name";
   string description = "";
@@ -66,7 +66,7 @@ TEST(GetNameTests, testLongName)
   EXPECT_EQ(item.getName(), name);
 }
 
-TEST(GetNameTests, testSpecialCharactersName)
+TEST(ObjectGetName, testSpecialCharactersName)
 {
   string name = "~!@#$%^&*()-+_={}";
   string description = "";
@@ -77,7 +77,7 @@ TEST(GetNameTests, testSpecialCharactersName)
   EXPECT_EQ(item.getName(), name);
 }
 
-TEST(GetDescriptionTests, testDescription)
+TEST(ObjectGetDesc, testDescription)
 {
   string name = "";
   string description = "An odd-looking book stands out amongst the other books in the bookshelf.";
@@ -88,7 +88,7 @@ TEST(GetDescriptionTests, testDescription)
   EXPECT_EQ(item.getDesc(), description);
 }
 
-TEST(GetDescriptionTests, testEmptyDescription)
+TEST(ObjectGetDesc, testEmptyDescription)
 {
   string name = "";
   string description = "";
@@ -99,7 +99,7 @@ TEST(GetDescriptionTests, testEmptyDescription)
   EXPECT_EQ(item.getDesc(), description);
 }
 
-TEST(GetInteractionTests, testInteraction)
+TEST(ObjectGetInteract, testInteraction)
 {
   string name = "";
   string description = "";
@@ -110,7 +110,7 @@ TEST(GetInteractionTests, testInteraction)
   EXPECT_EQ(item.getInteraction(), interaction);
 }
 
-TEST(GetInteractionTests, testEmptyInteraction)
+TEST(ObjectGetInteract, testEmptyInteraction)
 {
   string name = "";
   string description = "";
@@ -123,7 +123,7 @@ TEST(GetInteractionTests, testEmptyInteraction)
 
 // Setter tests
 
-TEST(SetNameTests, setName)
+TEST(ObjectSetName, setName)
 {
   string name = "Margaritaville CD";
   string description = "Some description here.";
@@ -137,7 +137,7 @@ TEST(SetNameTests, setName)
   EXPECT_EQ(item.getName(), newName);
 }
 
-TEST(SetNameTests, setNameToEmpty)
+TEST(ObjectSetName, setNameToEmpty)
 {
   string name = "Margaritaville CD";
   string description = "Some description here.";
@@ -149,7 +149,7 @@ TEST(SetNameTests, setNameToEmpty)
   EXPECT_EQ(item.getName(), "");
 }
 
-TEST(SetDescriptionTests, setDescription)
+TEST(ObjectSetDesc, setDescription)
 {
   string name = "Some name here.";
   string description = "Some description here.";
@@ -163,7 +163,7 @@ TEST(SetDescriptionTests, setDescription)
   EXPECT_EQ(item.getDesc(), newDescription);
 }
 
-TEST(SetDescriptionTests, setDescriptionToEmpty)
+TEST(ObjectSetDesc, setDescriptionToEmpty)
 {
   string name = "Some name here.";
   string description = "Some description here.";
@@ -175,7 +175,7 @@ TEST(SetDescriptionTests, setDescriptionToEmpty)
   EXPECT_EQ(item.getDesc(), "");
 }
 
-TEST(SetInteractionTests, setInteraction)
+TEST(ObjectSetInteract, setInteraction)
 {
   string name = "Some name here.";
   string description = "Some description here.";
@@ -189,7 +189,7 @@ TEST(SetInteractionTests, setInteraction)
   EXPECT_EQ(item.getInteraction(), newInteraction);
 }
 
-TEST(SetInteractionTests, setInteractionEmpty)
+TEST(ObjectSetInteract, setInteractionEmpty)
 {
   string name = "Some name here.";
   string description = "Some description here.";
@@ -199,12 +199,4 @@ TEST(SetInteractionTests, setInteractionEmpty)
   item.setInteraction("");
 
   EXPECT_EQ(item.getInteraction(), "");
-}
-
-// Interact tests
-
-int main(int argc, char **argv)
-{
-  testing::InitGoogleTest(&argc, argv);
-  return RUN_ALL_TESTS();
 }

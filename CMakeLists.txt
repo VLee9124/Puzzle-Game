@@ -3,50 +3,26 @@ project(puzzleGame)
 
 add_subdirectory(googletest)
 
-# For each new feature branch, add a new executable with the appropriate directories. 
-
-# add_executable(TEST_EXECUTABLE_NAME
-#     <DIRECTORIES>
-# )
-
-add_executable(runObjectTests
-    test/testObjects.cpp 
-    src/gameObject.cpp
-)
-
-add_executable(runInventoryClassTests
-    test/testInventory.cpp
+set(SOURCE_FILES
     src/gameObject.cpp
     src/inventoryObject.cpp
-    src/inventory.cpp
-)
-
-add_executable(runRoomTests
-    test/test.cpp
-    src/room.cpp
-    src/gameObject.cpp
     src/door.cpp
+    src/inventory.cpp
+    src/Player.cpp
+    src/room.cpp
+    src/gameTerminal.cpp
 )
 
-# add_executable(runTerminalTests
-#     test/testGameTerminal.cpp
-#     src/gameObject.cpp
-#     src/door.cpp
-#     src/inventoryObject.cpp
-#     src/inventory.cpp
-#     src/room.cpp
-#     src/Player.cpp
-#     src/gameTerminal.cpp
-# )
+set(TEST_FILES
+    test/testObjects.cpp
+    test/testInventory.cpp
+    test/testRoom.cpp
+    # test/testGameTerminal.cpp
+)
 
-TARGET_LINK_LIBRARIES(runObjectTests gtest)
-TARGET_COMPILE_DEFINITIONS(runObjectTests PRIVATE gtest_disable_pthreads=ON)
+add_executable(runAllTests
+    ${TEST_FILES}
+    ${SOURCE_FILES}
+)
 
-TARGET_LINK_LIBRARIES(runInventoryClassTests gtest)
-TARGET_COMPILE_DEFINITIONS(runInventoryClassTests PRIVATE gtest_disable_pthreads=ON)
-
-TARGET_LINK_LIBRARIES(runRoomTests gtest)
-TARGET_COMPILE_DEFINITIONS(runRoomTests PRIVATE gtest_disable_pthreads=ON)
-
-# TARGET_LINK_LIBRARIES(runTerminalTests gtest)
-# TARGET_COMPILE_DEFINITIONS(runTerminalTests PRIVATE gtest_disable_pthreads=ON)
+target_link_libraries(runAllTests gtest gtest_main)
