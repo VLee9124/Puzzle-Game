@@ -10,11 +10,10 @@ void Door::setOpen(bool val) {
     isOpen = val;
 }
 
-
 bool Door::getOpen() {
     return isOpen;
 }
 
 void Door::interact() {
-    
+    isOpen = true;
 }

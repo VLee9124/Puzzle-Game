@@ -1,7 +1,9 @@
 #pragma once
 
 #include <string>
-#include "gameObject.h"
+#include "gameObject.hpp"
+
+using namespace std;
 
 class Room;
 
