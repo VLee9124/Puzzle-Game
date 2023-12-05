@@ -1,4 +1,4 @@
-#include "../include/inventoryObject.h"
+#include "../include/inventoryObject.hpp"
 
 inventoryObject::inventoryObject(string name, string description, string interaction, string collectionMessage) : gameObject(name, description, interaction), collectionMessage(collectionMessage), collected(false) {}
 
