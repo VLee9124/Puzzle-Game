@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-#include "../include/inventoryObject.h"
+#include "../include/inventoryObject.hpp"
 
 // collect tests
 
