@@ -48,4 +48,9 @@ add_executable(runAllTests
     ${SOURCE_FILES}
 )
 
+# add_executable(runTerminalTest
+#     test/testGameTerminal.cpp
+#     ${SOURCE_FILES}
+# )
+
 target_link_libraries(runAllTests gtest gtest_main)

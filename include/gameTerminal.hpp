@@ -10,11 +10,11 @@ using namespace std;
 class gameTerminal {
     public:
         gameTerminal();
-        // gameTerminal(vector<Room*>);
+        gameTerminal(vector<Room*>);
         void playGame(ostream&, istream&);
-        void displayCurrRoom();
-        void proceedToOpenInventory();
-        void proceedToMoveTo();
+        void displayCurrRoom(ostream&);
+        void proceedToOpenInventory(ostream&, istream&);
+        void proceedToMoveTo(ostream&, istream&);
         void proceedToExamine();
         void proceedToWinScreen();
     private:
