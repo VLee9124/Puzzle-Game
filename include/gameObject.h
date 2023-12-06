@@ -7,7 +7,7 @@ using namespace std;
 
 class gameObject
 {
-private:
+protected:
   string name;
   string description;
   string interaction;
@@ -23,5 +23,5 @@ public:
   void setDesc(string description);
   void setInteraction(string interaction);
 
-  void interact();
+  virtual void interact();
 };
