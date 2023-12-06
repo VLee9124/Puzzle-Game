@@ -23,5 +23,5 @@ public:
   void setDesc(string description);
   void setInteraction(string interaction);
 
-  void interact();
+  virtual void interact();
 };
