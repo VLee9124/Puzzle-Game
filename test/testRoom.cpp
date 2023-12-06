@@ -18,7 +18,6 @@ TEST(RoomObjectTests, TestAddObject) {
     room->addObject(newObj);
     EXPECT_EQ(room->getObject(0), newObj);
     delete room;
-    delete newObj;
 }
 TEST(RoomObjectTests, TestRemoveObject) {
     Room* room = new Room("name", "desc");
@@ -33,8 +32,7 @@ TEST(RoomObjectTests, TestRemoveObject) {
 TEST(RoomDoorTests, TestAddDoor) {
     Room* room = new Room("name", "desc");
     Door* newDoor = new Door("name", "desc", "interaction", room);
-    room->addObject(newDoor);
-    EXPECT_EQ(room->getObject(0), newDoor);
+    room->addDoor(newDoor);
+    EXPECT_EQ(room->getAdjacentRooms().at(0), newDoor);
     delete room;
-    delete newDoor;
 }

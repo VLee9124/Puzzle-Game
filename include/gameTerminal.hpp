@@ -11,6 +11,7 @@ class gameTerminal {
     public:
         gameTerminal();
         gameTerminal(vector<Room*>);
+        ~gameTerminal();
         void playGame(ostream&, istream&);
         void displayCurrRoom(ostream&);
         void proceedToOpenInventory(ostream&, istream&);

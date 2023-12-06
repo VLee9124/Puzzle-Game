@@ -5,6 +5,15 @@ Room::Room(string name, string desc) {
     this->roomDesc = desc;
 }
 
+Room::~Room() {
+    for (unsigned i = 0; i < doorList.size(); ++i) {
+        delete doorList.at(i);
+    }
+    for (unsigned i = 0; i < objectList.size(); ++i) {
+        delete objectList.at(i);
+    }
+}
+
 vector<gameObject*> Room::getAllObjects() {
     return this->objectList;
 }

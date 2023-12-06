@@ -21,6 +21,12 @@ gameTerminal::gameTerminal() {
 
 gameTerminal::gameTerminal(vector<Room*> importedMap) : currPlayer(importedMap.at(0)), currMap(importedMap) {}
 
+gameTerminal::~gameTerminal() {
+    for (auto room : currMap) {
+        delete room;
+    }
+}
+
 void gameTerminal::playGame(ostream& out, istream& in) {
     char userInput = '0';
 

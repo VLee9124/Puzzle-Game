@@ -13,6 +13,7 @@ class Room {
         string roomDesc;
     public:
         Room(string name, string desc);
+        ~Room();
         vector<Door*> getAdjacentRooms();
         vector<gameObject*> getAllObjects();
         string getDesc();
