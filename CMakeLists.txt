@@ -58,10 +58,26 @@ add_executable(runPlayerClassTest
     src/gameObject.cpp
 )
 
+add_executable(runPuzzleTests
+    test/testPuzzle.cpp
+    src/puzzle.cpp
+)
+
+add_executable(runKeyPadTests
+    test/testKeyPad.cpp
+    src/keyPadpuzzle.cpp
+    src/puzzle.cpp
+    src/gameObject.cpp
+)
+
+TARGET_LINK_LIBRARIES(runKeyPadTests gtest)
+TARGET_COMPILE_DEFINITIONS(runKeyPadTests PRIVATE gtest_disable_pthreads=ON)
+
+TARGET_LINK_LIBRARIES(runPuzzleTests gtest)
+TARGET_COMPILE_DEFINITIONS(runPuzzleTests PRIVATE gtest_disable_pthreads=ON)
+
 TARGET_LINK_LIBRARIES(runPlayerClassTest gtest)
 TARGET_COMPILE_DEFINITIONS(runPlayerClassTest PRIVATE gtest_disable_pthreads=ON)
-
-
 
 TARGET_LINK_LIBRARIES(runObjectTests gtest)
 TARGET_COMPILE_DEFINITIONS(runObjectTests PRIVATE gtest_disable_pthreads=ON)
