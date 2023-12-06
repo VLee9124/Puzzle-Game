@@ -48,6 +48,21 @@ add_executable(runDoorTests
 #     src/gameTerminal.cpp
 # )
 
+add_executable(runPlayerClassTest
+    test/testPlayer.cpp
+    src/player.cpp
+    src/room.cpp
+    src/inventory.cpp
+    src/door.cpp
+    src/inventoryObject.cpp
+    src/gameObject.cpp
+)
+
+TARGET_LINK_LIBRARIES(runPlayerClassTest gtest)
+TARGET_COMPILE_DEFINITIONS(runPlayerClassTest PRIVATE gtest_disable_pthreads=ON)
+
+
+
 TARGET_LINK_LIBRARIES(runObjectTests gtest)
 TARGET_COMPILE_DEFINITIONS(runObjectTests PRIVATE gtest_disable_pthreads=ON)
 
