@@ -4,8 +4,6 @@
 #include <vector>
 using namespace std;
 
-using namespace std;
-
 class gameObject
 {
 protected:
@@ -15,6 +13,7 @@ protected:
 
 public:
   gameObject(string name, string description, string interaction);
+  virtual ~gameObject() {}
 
   string getName();
   string getDesc();
@@ -24,5 +23,5 @@ public:
   void setDesc(string);
   void setInteraction(string);
 
-  virtual void interact();
+  virtual void interact(ostream&, istream&);
 };

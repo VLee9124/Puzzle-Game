@@ -10,7 +10,7 @@ private:
 
 public:
   inventoryObject(string, string, string, string);
-  void interact() override;
+  void interact(ostream& out, istream& in) override;
   void collect();
   string getCollectMsg();
 };

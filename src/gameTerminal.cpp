@@ -1,4 +1,5 @@
 #include "../include/gameTerminal.hpp"
+#include <typeinfo>
 
 // This is a default constructor that simply creates a test situation. FOR TESTING ONLY AND WILL NOT BE USED IN GAME.
 gameTerminal::gameTerminal() {
@@ -9,6 +10,11 @@ gameTerminal::gameTerminal() {
     Door* door2To1 = new Door("Door to Start", "this is a door.", "the door is unlocked.", room1);
     room1->addDoor(door1To2);
     room2->addDoor(door2To1);
+
+    gameObject* note = new gameObject("Note", "A crumpled note you found on the floor.", "The note reads '2231'.");
+    inventoryObject* note2 = new inventoryObject("Note 2", "Another crumpled note you found on the floor.", "The note reads '1192'.", "Object has been collected.");
+    room1->addObject(note);
+    room1->addObject(note2);
 
     inventoryObject* objA = new inventoryObject("Object A", "This is an object.", "The object reads 1929.", "Object A has been collected.");
 
@@ -30,7 +36,7 @@ gameTerminal::~gameTerminal() {
 void gameTerminal::playGame(ostream& out, istream& in) {
     char userInput = '0';
 
-    while (userInput != 'Q') {
+    while (toupper(userInput) != 'Q') {
         out << "=====================================================" << endl << endl;
         
         displayCurrRoom(out);
@@ -44,11 +50,14 @@ void gameTerminal::playGame(ostream& out, istream& in) {
         in >> userInput;
         out << endl;
 
-        if (userInput == 'I') {
+        if (toupper(userInput) == 'I') {
             proceedToOpenInventory(out, in);
         }
-        if (userInput == 'M') {
+        else if (toupper(userInput) == 'M') {
             proceedToMoveTo(out, in);
+        }
+        else if (toupper(userInput) == 'F') {
+            proceedToExamineRoom(out, in);
         }
     }
 }
@@ -61,12 +70,12 @@ void gameTerminal::displayCurrRoom(ostream& out) {
 void gameTerminal::proceedToOpenInventory(ostream& out, istream& in) {
     char userInput = '0';
 
-    while (userInput != 'Q') {
+    while (toupper(userInput) != 'Q') {
         out << "=====================================================" << endl << endl;
         out << "INVENTORY" << endl << endl;
 
         if (currPlayer.getInventory().itemCount() <= 0) {
-            out << "There are no objects in your inventory right now" << endl;
+            out << "There are no objects in your inventory right now" << endl << endl;
             break;
         }
 
@@ -97,18 +106,18 @@ void gameTerminal::proceedToOpenInventory(ostream& out, istream& in) {
 void gameTerminal::proceedToMoveTo(ostream& out, istream& in) {
     char userInput = '0';
 
-    while (userInput != 'Q') {
+    while (toupper(userInput) != 'Q') {
         out << "=====================================================" << endl << endl;
         out << "MOVING TO A DIFFERENT ROOM" << endl << endl;
 
         out << "You are currently in: " << currPlayer.getCurrRoom()->getName() << endl << endl;
 
         if (currPlayer.getCurrRoom()->getAdjacentRooms().size() <= 0) {
-            out << "There are no adjacent doors next to the current room" << endl;
+            out << "There are no adjacent doors next to the current room" << endl << endl;
             break;
         }
 
-        out << "The following rooms can be accessed from here:" << endl;
+        out << "The room contains the following doors to other rooms:" << endl;
         for (unsigned i = 0; i < currPlayer.getCurrRoom()->getAdjacentRooms().size(); ++i) {
             out << to_string(i + 1) << ". " << currPlayer.getCurrRoom()->getAdjacentRooms().at(i)->getName() << endl;
         }
@@ -126,8 +135,66 @@ void gameTerminal::proceedToMoveTo(ostream& out, istream& in) {
             }
             else {
                 currPlayer.setCurrRoom(currPlayer.getCurrRoom()->getAdjacentRooms().at(int(userInput - '0') - 1)->getAdjacentRoom());
+                out << "You have successfully moved to the adjacent room: " << currPlayer.getCurrRoom()->getName() << endl;
             }
             out << endl;
+        }
+    }
+}
+
+void gameTerminal::proceedToExamineRoom(ostream& out, istream& in) {
+    char userInput = '0';
+
+    while (toupper(userInput) != 'Q') {
+        out << "=====================================================" << endl << endl;
+        out << "EXAMINE CURRENT ROOM" << endl << endl;
+
+        out << "You are currently in: " << currPlayer.getCurrRoom()->getName() << endl << endl;
+
+        if (currPlayer.getCurrRoom()->getAllObjects().size() <= 0) {
+            out << "There are no objects to observe here" << endl << endl;
+            break;
+        }
+
+        for (unsigned i = 0; i < currPlayer.getCurrRoom()->getAllObjects().size(); ++i) {
+            out << to_string(i + 1) << ". " << currPlayer.getCurrRoom()->getAllObjects().at(i)->getName() << endl;
+        }
+
+        out << endl << "Enter the corresponding number to examine an object" << endl;
+        out << "Enter [Q] to go back" << endl << endl;
+
+        out << "> ";
+        in >> userInput;
+        out << endl;
+
+        if (0 < int(userInput - '0') && int(userInput - '0') <= 9) {
+            if (int(userInput - '0') > currPlayer.getCurrRoom()->getAllObjects().size()) {
+                out << "The number is invalid because it is out of the object list range" << endl;
+            }
+            else {
+                gameObject* currObj = currPlayer.getCurrRoom()->getObject(int(userInput - '0') - 1);
+                out << currObj->getDesc() << endl << endl;
+                
+                if (currObj->getDesc() != currObj->getInteraction()) {
+                    out << "Do you want to interact with this object?" << endl << endl;
+
+                    out << "> ";
+                    in >> userInput;
+                    out << endl;
+
+                    if (toupper(userInput) == 'Y') {
+                        currObj->interact(out, in);
+
+                        if (typeid(*currObj).name() == typeid(inventoryObject).name()) {
+                            out << "You have collected the object and put it in your inventory." << endl << endl;
+                            currPlayer.getInventory().addItem(dynamic_cast<inventoryObject*>(currObj));
+                            currPlayer.getCurrRoom()->takeObject(currPlayer.getCurrRoom()->searchObject(currObj));
+                        }
+
+                        out << currObj->getDesc() << endl << endl;
+                    }
+                }
+            }
         }
     }
 }

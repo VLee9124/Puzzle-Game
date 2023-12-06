@@ -14,5 +14,5 @@ class Door : public gameObject{
         Room* getAdjacentRoom();
         void setOpen(bool val);
         bool getOpen();
-        void interact() override;
+        void interact(ostream& out, istream& in) override;
 };

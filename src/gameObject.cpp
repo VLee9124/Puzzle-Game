@@ -34,7 +34,7 @@ string gameObject::getInteraction()
   return interaction;
 }
 
-void gameObject::interact()
+void gameObject::interact(ostream& out, istream& in)
 {
   // We swap original description to interaction message. User is able to see object descriptions from examine(), but we want interaction message to only display when an object chooses to examine it particuarly.
   description = interaction;

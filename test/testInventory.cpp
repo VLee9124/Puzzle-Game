@@ -28,7 +28,7 @@ TEST(InventoryContents, TestOneItem) {
     ASSERT_NO_THROW(myInventory);
     ASSERT_NO_THROW(Book);
 
-    Book->interact();
+    Book->interact(cout, cin);
     myInventory.addItem(Book);
     expectedObjs.push_back(Book);
 
@@ -48,11 +48,11 @@ TEST(InventoryContents, TestMultipleItems) {
     ASSERT_NO_THROW(Book);
     ASSERT_NO_THROW(Note);
 
-    Book->interact();
+    Book->interact(cout, cin);
     myInventory.addItem(Book);
     expectedObjs.push_back(Book);
     
-    Note->interact();
+    Note->interact(cout, cin);
     myInventory.addItem(Note);
     expectedObjs.push_back(Note);
 
@@ -69,7 +69,7 @@ TEST(InventoryItemDescription, TestIndexZero) {
     ASSERT_NO_THROW(myInventory);
     ASSERT_NO_THROW(Note);
 
-    Note->interact();
+    Note->interact(cout, cin);
     myInventory.addItem(Note);
 
     EXPECT_NO_THROW(myInventory.getItemDescription(0));
@@ -90,13 +90,13 @@ TEST(InventoryItemDescription, TestIndexNonzero) {
     ASSERT_NO_THROW(RedCoin);
     ASSERT_NO_THROW(GreenCoin);
 
-    Bottle->interact();
+    Bottle->interact(cout, cin);
     myInventory.addItem(Bottle);
 
-    RedCoin->interact();
+    RedCoin->interact(cout, cin);
     myInventory.addItem(RedCoin);
 
-    GreenCoin->interact();
+    GreenCoin->interact(cout, cin);
     myInventory.addItem(GreenCoin);
     
     EXPECT_NO_THROW(myInventory.getItemDescription(2));
@@ -118,7 +118,7 @@ TEST(InventoryGetItem, OneItem) {
     ASSERT_NO_THROW(myInventory);
     ASSERT_NO_THROW(Bottle);
 
-    Bottle->interact();
+    Bottle->interact(cout, cin);
     myInventory.addItem(Bottle);
 
     EXPECT_EQ(myInventory.getItemFromInventory(0), Bottle);
@@ -129,10 +129,10 @@ TEST(InventoryGetItem, MultipleItems) {
     inventoryObject* RedCoin = new inventoryObject("Red Coin", "A small red coin with some writing on it.", "A small red coin you picked up. It reads '4' on one side and 'D' on the other.", "You picked up the red coin.");
     inventoryObject* GreenCoin = new inventoryObject("Green Coin", "A small green coin with some writing on it.", "A small red coin you picked up. It reads '9' on one side and 'F' on the other.", "You picked up the green coin.");
 
-    RedCoin->interact();
+    RedCoin->interact(cout, cin);
     myInventory.addItem(RedCoin);
 
-    GreenCoin->interact();
+    GreenCoin->interact(cout, cin);
     myInventory.addItem(GreenCoin);
 
     EXPECT_EQ(myInventory.getItemFromInventory(1), GreenCoin);
@@ -143,10 +143,10 @@ TEST(InventoryGetItem, OutOfRangeError) {
     inventoryObject* RedCoin = new inventoryObject("Red Coin", "A small red coin with some writing on it.", "A small red coin you picked up. It reads '4' on one side and 'D' on the other.", "You picked up the red coin.");
     inventoryObject* GreenCoin = new inventoryObject("Green Coin", "A small green coin with some writing on it.", "A small red coin you picked up. It reads '9' on one side and 'F' on the other.", "You picked up the green coin.");
 
-    RedCoin->interact();
+    RedCoin->interact(cout, cin);
     myInventory.addItem(RedCoin);
 
-    GreenCoin->interact();
+    GreenCoin->interact(cout, cin);
     myInventory.addItem(GreenCoin);
 
     EXPECT_THROW(myInventory.getItemFromInventory(3), runtime_error);
@@ -156,7 +156,7 @@ TEST(InventoryRemoveItem, RemoveOnlyItem) {
     inventory myInventory;
     inventoryObject* Book = new inventoryObject("Clue Book", "An unopened book. What could be written inside?", "After opening the book you collected, you find that the first page reads '1294'.", "You picked up the book.");
 
-    Book->interact();
+    Book->interact(cout, cin);
     myInventory.addItem(Book);
 
     EXPECT_EQ(myInventory.itemCount(), 1);
@@ -172,13 +172,13 @@ TEST(InventoryRemoveItem, RemoveMultipleItems) {
     inventoryObject* RedCoin = new inventoryObject("Red Coin", "A small red coin with some writing on it.", "A small red coin you picked up. It reads '4' on one side and 'D' on the other.", "You picked up the red coin.");
     inventoryObject* GreenCoin = new inventoryObject("Green Coin", "A small green coin with some writing on it.", "A small red coin you picked up. It reads '9' on one side and 'F' on the other.", "You picked up the green coin.");
 
-    Bottle->interact();
+    Bottle->interact(cout, cin);
     myInventory.addItem(Bottle);
 
-    RedCoin->interact();
+    RedCoin->interact(cout, cin);
     myInventory.addItem(RedCoin);
 
-    GreenCoin->interact();
+    GreenCoin->interact(cout, cin);
     myInventory.addItem(GreenCoin);
 
     EXPECT_EQ(myInventory.itemCount(), 3);

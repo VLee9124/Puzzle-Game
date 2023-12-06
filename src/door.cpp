@@ -15,6 +15,6 @@ bool Door::getOpen() {
     return isOpen;
 }
 
-void Door::interact() {
-    
+void Door::interact(ostream& out, istream& in) {
+    gameObject::interact(out, in);
 }

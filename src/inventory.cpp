@@ -22,7 +22,6 @@ string inventory::getItemDescription(int itemIndex) const {
 // Adds a new item to the inventory
 void inventory::addItem(inventoryObject* newItem) {
     items.push_back(newItem);
-    newItem->interact();
 }
 
 // Removes an item from the inventory given its index.

@@ -16,7 +16,8 @@ class gameTerminal {
         void displayCurrRoom(ostream&);
         void proceedToOpenInventory(ostream&, istream&);
         void proceedToMoveTo(ostream&, istream&);
-        void proceedToExamine();
+        void proceedToExamineRoom(ostream&, istream&);
+        void proceedToExamineObject(ostream&, istream&);
         void proceedToWinScreen();
     private:
         Player currPlayer;

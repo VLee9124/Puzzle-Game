@@ -20,6 +20,8 @@ class Room {
         string getName();
         gameObject* getObject(int index);
         bool emptyRoom();
+        unsigned searchObject(gameObject*);
+        void takeObject(int itemIndex);
         void removeObject(int itemIndex);
         void addObject(gameObject* newObj);
         void addDoor(Door* newDoor);

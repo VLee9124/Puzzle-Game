@@ -2,9 +2,9 @@
 
 inventoryObject::inventoryObject(string name, string description, string interaction, string collectionMessage) : gameObject(name, description, interaction), collectionMessage(collectionMessage), collected(false) {}
 
-void inventoryObject::interact()
+void inventoryObject::interact(ostream& out, istream& in)
 {
-  description = interaction;
+  gameObject::interact(out, in);
   collect();
 }
 

@@ -6,9 +6,6 @@ Room::Room(string name, string desc) {
 }
 
 Room::~Room() {
-    for (unsigned i = 0; i < doorList.size(); ++i) {
-        delete doorList.at(i);
-    }
     for (unsigned i = 0; i < objectList.size(); ++i) {
         delete objectList.at(i);
     }
@@ -34,6 +31,15 @@ void Room::addObject(gameObject* newObj) {
     this->objectList.push_back(newObj);
 }
 
+void Room::takeObject(int itemIndex) {
+    if (!(0 <= itemIndex && itemIndex < objectList.size())) {
+        throw runtime_error("Cannot get item. Index is out of range.");
+    }
+
+    gameObject* victimObject = objectList.at(itemIndex);
+    objectList.erase(objectList.begin() + itemIndex);
+}
+
 void Room::removeObject(int itemIndex) {
     if (!(0 <= itemIndex && itemIndex < objectList.size())) {
         throw runtime_error("Cannot get item. Index is out of range.");
@@ -44,7 +50,18 @@ void Room::removeObject(int itemIndex) {
     delete victimObject;
 }
 
+unsigned Room::searchObject(gameObject* currObj) {
+    for (unsigned i = 0; i < objectList.size(); ++i) {
+        if (currObj == objectList.at(i)) {
+            return i;
+        }
+    }
+
+    return 999;
+}
+
 void Room::addDoor(Door* newDoor) {
+    addObject(newDoor);
     this->doorList.push_back(newDoor);
 }
 
