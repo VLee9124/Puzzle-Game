@@ -1,9 +1,12 @@
 #pragma once
 
-#include "gameObject.h"
-#include "door.hpp"
-#include <algorithm>
+#include <string>
+#include <vector>
 #include <stdexcept>
+#include "gameObject.hpp"
+#include "door.hpp"
+
+using namespace std;
 
 class Room {
     private:

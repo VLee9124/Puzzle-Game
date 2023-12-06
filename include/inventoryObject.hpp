@@ -1,6 +1,7 @@
 #pragma once
 
-#include "gameObject.h"
+#include <string>
+#include "gameObject.hpp"
 #include <iostream>
 using namespace std;
 
@@ -14,5 +15,6 @@ public:
   inventoryObject(string, string, string, string);
   void interact(ostream& out, istream& in) override;
   void collect(ostream&);
+  bool checkIfCollected();
   string getCollectMsg();
 };

@@ -1,7 +1,9 @@
 #pragma once
 
 #include <string>
-#include "gameObject.h"
+#include "gameObject.hpp"
+
+using namespace std;
 
 class Room;
 
@@ -11,6 +13,7 @@ class Door : public gameObject{
         bool isOpen;
     public:
         Door(string, string, string, Room*);
+        Door(string, string, string, Room*, bool);
         Room* getAdjacentRoom();
         void setOpen(bool val);
         bool getOpen();

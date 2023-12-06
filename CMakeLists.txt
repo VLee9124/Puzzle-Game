@@ -40,6 +40,9 @@ set(TEST_FILES
     test/testObjects.cpp
     test/testInventory.cpp
     test/testRoom.cpp
+    test/testPlayer.cpp
+    test/testDoor.cpp
+    test/testInventoryObject.cpp
     # test/testGameTerminal.cpp
 )
 

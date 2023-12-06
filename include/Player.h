@@ -1,5 +1,6 @@
 #pragma once
 
+#include <string>
 #include "room.hpp"
 #include "inventory.hpp"
 

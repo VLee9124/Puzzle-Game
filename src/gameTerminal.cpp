@@ -93,7 +93,6 @@ void gameTerminal::proceedToMoveTo(ostream& out, istream& in) {
         out << "You are currently in: " << currPlayer.getCurrRoom()->getName() << endl << endl;
 
         if (currPlayer.getCurrRoom()->getAdjacentRooms().size() <= 0) {
-            out << "There are no adjacent doors next to the current room" << endl << endl;
             break;
         }
 
@@ -113,9 +112,12 @@ void gameTerminal::proceedToMoveTo(ostream& out, istream& in) {
             if (int(userInput - '0') > currPlayer.getCurrRoom()->getAdjacentRooms().size()) {
                 out << "The number is invalid because it is out of the room list range" << endl;
             }
-            else {
+            else if (currPlayer.getCurrRoom()->getAdjacentRooms().at(int(userInput - '0') - 1)->getOpen()) {
                 currPlayer.setCurrRoom(currPlayer.getCurrRoom()->getAdjacentRooms().at(int(userInput - '0') - 1)->getAdjacentRoom());
                 out << "You have successfully moved to the adjacent room: " << currPlayer.getCurrRoom()->getName() << endl;
+            }
+            else {
+                out << "You cannot move to the next room since the door is locked" << endl;
             }
             out << endl;
         }
