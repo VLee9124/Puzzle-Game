@@ -9,8 +9,7 @@ using namespace std;
 
 class gameTerminal {
     public:
-        gameTerminal();
-        gameTerminal(vector<Room*>);
+        gameTerminal(const vector<Room*>&);
         ~gameTerminal();
         void playGame(ostream&, istream&);
         void displayCurrRoom(ostream&);
@@ -18,7 +17,7 @@ class gameTerminal {
         void proceedToMoveTo(ostream&, istream&);
         void proceedToExamineRoom(ostream&, istream&);
         void proceedToExamineObject(ostream&, istream&);
-        void proceedToWinScreen();
+        void proceedToWinScreen(ostream&, istream&);
     private:
         Player currPlayer;
         vector<Room*> currMap;

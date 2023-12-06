@@ -1,31 +1,7 @@
 #include "../include/gameTerminal.hpp"
 #include <typeinfo>
 
-// This is a default constructor that simply creates a test situation. FOR TESTING ONLY AND WILL NOT BE USED IN GAME.
-gameTerminal::gameTerminal() {
-    Room* room1 = new Room("Start Room", "The beginning of your journey.");
-    Room* room2 = new Room("End Room", "The end of your journey.");
-
-    Door* door1To2 = new Door("Door to End", "this is a door.", "the door is unlocked.", room2);
-    Door* door2To1 = new Door("Door to Start", "this is a door.", "the door is unlocked.", room1);
-    room1->addDoor(door1To2);
-    room2->addDoor(door2To1);
-
-    gameObject* note = new gameObject("Note", "A crumpled note you found on the floor.", "The note reads '2231'.");
-    inventoryObject* note2 = new inventoryObject("Note 2", "Another crumpled note you found on the floor.", "The note reads '1192'.", "Object has been collected.");
-    room1->addObject(note);
-    room1->addObject(note2);
-
-    inventoryObject* objA = new inventoryObject("Object A", "This is an object.", "The object reads 1929.", "Object A has been collected.");
-
-    currMap.push_back(room1);
-    currMap.push_back(room2);
-
-    currPlayer = Player(currMap.at(0));
-    currPlayer.getInventory().addItem(objA);
-}
-
-gameTerminal::gameTerminal(vector<Room*> importedMap) : currPlayer(importedMap.at(0)), currMap(importedMap) {}
+gameTerminal::gameTerminal(const vector<Room*>& importedMap) : currPlayer(importedMap.at(0)), currMap(importedMap) {}
 
 gameTerminal::~gameTerminal() {
     for (auto room : currMap) {
@@ -37,6 +13,10 @@ void gameTerminal::playGame(ostream& out, istream& in) {
     char userInput = '0';
 
     while (toupper(userInput) != 'Q') {
+        if (currPlayer.getCurrRoom()->getName() == "End Room") {
+            proceedToWinScreen(out, in);
+            break;
+        }
         out << "=====================================================" << endl << endl;
         
         displayCurrRoom(out);
@@ -178,6 +158,9 @@ void gameTerminal::proceedToExamineRoom(ostream& out, istream& in) {
                 if (currObj->getDesc() != currObj->getInteraction()) {
                     out << "Do you want to interact with this object?" << endl << endl;
 
+                    out << "Enter [Y] to interact with the object" << endl;
+                    out << "Enter any other key to decline" << endl << endl;
+
                     out << "> ";
                     in >> userInput;
                     out << endl;
@@ -186,7 +169,6 @@ void gameTerminal::proceedToExamineRoom(ostream& out, istream& in) {
                         currObj->interact(out, in);
 
                         if (typeid(*currObj).name() == typeid(inventoryObject).name()) {
-                            out << "You have collected the object and put it in your inventory." << endl << endl;
                             currPlayer.getInventory().addItem(dynamic_cast<inventoryObject*>(currObj));
                             currPlayer.getCurrRoom()->takeObject(currPlayer.getCurrRoom()->searchObject(currObj));
                         }
@@ -197,4 +179,19 @@ void gameTerminal::proceedToExamineRoom(ostream& out, istream& in) {
             }
         }
     }
+}
+
+void gameTerminal::proceedToWinScreen(ostream& out, istream& in) {
+    char userInput = '0';
+    out << "=====================================================" << endl << endl;
+
+    out << "You escaped from the Puzzle Room!" << endl << endl;
+
+    out << "Enter any key to return to the main menu" << endl << endl;
+
+    out << "> ";
+    in >> userInput;
+    out << endl;
+
+    out << "=====================================================" << endl << endl;
 }

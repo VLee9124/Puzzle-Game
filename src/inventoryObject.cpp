@@ -5,13 +5,14 @@ inventoryObject::inventoryObject(string name, string description, string interac
 void inventoryObject::interact(ostream& out, istream& in)
 {
   gameObject::interact(out, in);
-  collect();
+  collect(out);
 }
 
-void inventoryObject::collect()
+void inventoryObject::collect(ostream& out)
 {
   if (!collected)
   {
+    out << getCollectMsg() << endl << endl;
     collected = true;
   }
 }
