@@ -7,7 +7,7 @@ using namespace std;
 
 class gameObject
 {
-private:
+protected:
   string name;
   string description;
   string interaction;
