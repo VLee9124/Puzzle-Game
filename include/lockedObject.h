@@ -15,4 +15,5 @@ public:
   void interact() override;
   bool getLocked() { return isLocked; }
   void setLocked(bool val) { isLocked = val; }
+  void unlock(ostream &out, ifstream &in)
 };

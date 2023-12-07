@@ -7,3 +7,7 @@ void lockedObject::interact()
   description = interaction;
   getLocked();
 }
+
+void lockedObject::unlock(ostream &out, ifstream &in)
+{
+}
