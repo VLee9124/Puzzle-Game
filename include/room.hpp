@@ -1,12 +1,5 @@
-#pragma once
-
-#include <string>
-#include <vector>
-#include <stdexcept>
-#include "gameObject.hpp"
-#include "door.hpp"
-
-using namespace std;
+#ifndef ROOM_HPP
+#define ROOM_HPP
 
 class Room {
     private:
@@ -15,17 +8,14 @@ class Room {
         string roomName;
         string roomDesc;
     public:
-        Room(string name, string desc);
-        ~Room();
-        vector<Door*> getAdjacentRooms();
-        vector<gameObject*> getAllObjects();
+        Room(string name);
+        string getAdjacentRooms();
+        string getAllObjects();
         string getDesc();
         string getName();
-        gameObject* getObject(int index);
-        bool emptyRoom();
-        unsigned searchObject(gameObject*);
-        void takeObject(int itemIndex);
-        void removeObject(int itemIndex);
-        void addObject(gameObject* newObj);
+        void removeObject(GameObject* targetObj);
+        void addObject(GameObject* newObj);
         void addDoor(Door* newDoor);
 };
+
+#endif /* ROOM_HPP */

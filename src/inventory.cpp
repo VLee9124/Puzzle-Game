@@ -7,6 +7,19 @@ inventory::~inventory() {
     }
 }
 
+// Return a string that lists all the object names in the inventory
+// string inventory::getInventoryContents() const {
+//     string outputString = "";
+//     int listNum = 1;
+
+//     for (unsigned i = 0; i < items.size(); ++i) {
+//         outputString += to_string(listNum) + ". " + items.at(i)->getName() + "\n";
+//         ++listNum;
+//     }
+
+//     return outputString;
+// }
+
 vector<inventoryObject*> inventory::getInventoryContents() const {
     return items;
 }
@@ -22,6 +35,7 @@ string inventory::getItemDescription(int itemIndex) const {
 // Adds a new item to the inventory
 void inventory::addItem(inventoryObject* newItem) {
     items.push_back(newItem);
+    newItem->interact();
 }
 
 // Removes an item from the inventory given its index.

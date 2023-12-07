@@ -3,8 +3,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include "inventoryObject.hpp"
-
+#include "inventoryObject.h"
 using namespace std;
 
 class inventory {
