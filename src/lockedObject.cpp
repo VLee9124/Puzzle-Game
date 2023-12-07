@@ -8,6 +8,15 @@ void lockedObject::interact()
   getLocked();
 }
 
-void lockedObject::unlock(ostream &out, ifstream &in)
+void lockedObject::unlock(ostream &out)
 {
+  if (isLocked == true)
+  {
+    // objPuzzle->solvePuzzle();
+  }
+  else
+  {
+    string unlockMessage = " is already unlocked.";
+    out << name << unlockMessage;
+  }
 }
