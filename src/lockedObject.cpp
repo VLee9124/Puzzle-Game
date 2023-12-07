@@ -7,3 +7,16 @@ void lockedObject::interact()
   description = interaction;
   getLocked();
 }
+
+void lockedObject::unlock(ostream &out)
+{
+  if (isLocked == true)
+  {
+    // objPuzzle->solvePuzzle();
+  }
+  else
+  {
+    string unlockMessage = " is already unlocked.";
+    out << name << unlockMessage;
+  }
+}
