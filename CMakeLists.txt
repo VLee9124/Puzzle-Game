@@ -27,41 +27,16 @@ add_subdirectory(${CMAKE_CURRENT_BINARY_DIR}/googletest-src
         EXCLUDE_FROM_ALL)
 
 set(SOURCE_FILES
-    src/gameObject.cpp
-    src/inventoryObject.cpp
-    src/door.cpp
-    src/inventory.cpp
-    src/player.cpp
-    src/room.cpp
-    src/gameTerminal.cpp
-    src/puzzle.cpp
-    src/keypadPuzzle.cpp
-    src/lockedObject.cpp
-    src/lockedDoor.cpp
+    src/
 )
 
 set(TEST_FILES
-    test/testObjects.cpp
-    test/testInventory.cpp
-    test/testRoom.cpp
-    test/testPlayer.cpp
-    test/testDoor.cpp
-    test/testInventoryObject.cpp
-    test/testPuzzle.cpp
-    test/testKeyPad.cpp
-    test/testLockedObjects.cpp
-    test/testLockedDoor.cpp
-    test/testGameTerminal.cpp
+    test/
 )
 
 add_executable(runAllTests
     ${TEST_FILES}
     ${SOURCE_FILES}
 )
-
-add_executable(PuzzleRoom
-    src/main.cpp
-    ${SOURCE_FILES}
-)   
 
 target_link_libraries(runAllTests gtest gtest_main)

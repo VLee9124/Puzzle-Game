@@ -1,24 +1,19 @@
-#include "../include/inventoryObject.hpp"
+#include "../include/inventoryObject.h"
 
 inventoryObject::inventoryObject(string name, string description, string interaction, string collectionMessage) : gameObject(name, description, interaction), collectionMessage(collectionMessage), collected(false) {}
 
-void inventoryObject::interact(ostream& out, istream& in)
+void inventoryObject::interact()
 {
-  gameObject::interact(out, in);
-  collect(out);
+  description = interaction;
+  collect();
 }
 
-void inventoryObject::collect(ostream& out)
+void inventoryObject::collect()
 {
   if (!collected)
   {
-    out << getCollectMsg() << endl << endl;
     collected = true;
   }
-}
-
-bool inventoryObject::checkIfCollected() {
-  return collected;
 }
 
 string inventoryObject::getCollectMsg() {
