@@ -31,9 +31,12 @@ set(SOURCE_FILES
     src/inventoryObject.cpp
     src/door.cpp
     src/inventory.cpp
-    src/Player.cpp
+    src/player.cpp
     src/room.cpp
     src/gameTerminal.cpp
+    src/puzzle.cpp
+    src/keypadPuzzle.cpp
+    src/lockedObject.cpp
 )
 
 set(TEST_FILES
@@ -43,6 +46,9 @@ set(TEST_FILES
     test/testPlayer.cpp
     test/testDoor.cpp
     test/testInventoryObject.cpp
+    test/testPuzzle.cpp
+    test/testKeyPad.cpp
+    test/testLockedObjects.cpp
     # test/testGameTerminal.cpp
 )
 

@@ -1,19 +1,20 @@
 #pragma once
 
 #include "gameObject.hpp"
-
-class Puzzle;
+#include "puzzle.hpp"
+#include "keypadPuzzle.hpp"
 
 class lockedObject : public gameObject
 {
 protected:
   bool isLocked;
-  Puzzle *objPuzzle;
+  Puzzle* objPuzzle;
 
 public:
   lockedObject(string, string, string, Puzzle *);
-  void interact() override;
+  ~lockedObject() { delete objPuzzle; }
+  void interact(ostream&, istream&) override;
   bool getLocked() { return isLocked; }
   void setLocked(bool val) { isLocked = val; }
-  void unlock(ostream &out);
+  void unlock(ostream&, istream&);
 };

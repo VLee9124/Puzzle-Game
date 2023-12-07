@@ -1,14 +1,25 @@
-#include "../include/keyPadpuzzle.hpp"
-
+#include "../include/keypadPuzzle.hpp"
+#include <cassert>
 
 KeypadPuzzle::KeypadPuzzle(string prompt, int solution) : Puzzle(prompt), solution(solution) {}
 
-bool KeypadPuzzle::solvePuzzle(int userInput) {
+bool KeypadPuzzle::solvePuzzle(ostream& out, istream& in) {
+    int userInput = 0;
+
+    out << getPrompt() << endl << endl;
+
+    out << "> ";
+    if (!(in >> userInput)) {
+        throw runtime_error("Bad input was detected.");
+    }
+    out << endl << endl;
+
     if (userInput == solution) {
         isSolved = true;
-        cout << "Correct! The keypad puzzle is solved." << endl;
+        out << "CORRECT. The puzzle is now solved." << endl << endl;
     } else {
-        cout << "Incorrect. The keypad puzzle remains unsolved." << endl;
+        out << "INCORRECT. The puzzle remains unsolved." << endl << endl;
     }
+
     return isSolved;
 }

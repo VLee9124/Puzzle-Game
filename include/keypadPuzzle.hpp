@@ -11,8 +11,8 @@ using namespace std;
 class KeypadPuzzle : public Puzzle {
     public:
         KeypadPuzzle(string prompt, int solution);
-        bool solvePuzzle(int userInput);
+        bool solvePuzzle(ostream&, istream&);
     private:
-    int solution;
+        int solution;
 };
 

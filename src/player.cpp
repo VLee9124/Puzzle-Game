@@ -1,4 +1,4 @@
-#include "../include/Player.h"
+#include "../include/player.hpp"
 
 Player::Player() : currRoom(nullptr) {}
 

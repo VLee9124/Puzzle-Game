@@ -3,8 +3,9 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include "Player.h"
+#include "player.hpp"
 #include "door.hpp"
+#include "lockedObject.hpp"
 using namespace std;
 
 class gameTerminal {

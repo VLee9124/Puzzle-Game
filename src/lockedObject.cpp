@@ -1,22 +1,27 @@
-#include "../include/lockedObject.h"
+#include "../include/lockedObject.hpp"
 
-lockedObject::lockedObject(string name, string description, string interaction, Puzzle *objPuzzle) : gameObject(name, description, interaction), isLocked(true), objPuzzle(nullptr) {}
+lockedObject::lockedObject(string name, string description, string interaction, Puzzle *objPuzzle) : gameObject(name, description, interaction), isLocked(true), objPuzzle(objPuzzle) {}
 
-void lockedObject::interact()
-{
-  description = interaction;
-  getLocked();
+void lockedObject::interact(ostream& out, istream& in) {
+  if (objPuzzle != nullptr) {
+      unlock(out, in);
+  }
+  if (!isLocked) {
+    description = interaction;
+  }
 }
 
-void lockedObject::unlock(ostream &out)
-{
-  if (isLocked == true)
-  {
-    // objPuzzle->solvePuzzle();
+void lockedObject::unlock(ostream& out, istream& in) {
+  if (isLocked == true) {
+    if (objPuzzle->solvePuzzle(out, in)) {
+      setLocked(false);
+      out << "The object is now unlocked." << endl << endl;
+    }
+    else {
+      out << "The object is still locked." << endl << endl;
+    }
   }
-  else
-  {
-    string unlockMessage = " is already unlocked.";
-    out << name << unlockMessage;
+  else {
+    out << "The object is already unlocked." << endl << endl;
   }
 }

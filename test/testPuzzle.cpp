@@ -5,11 +5,12 @@
 I created  class like TestPuzzle for testing*/
 
 #include <gtest/gtest.h>
+#include <sstream>
 
 class TestPuzzle : public Puzzle {
 public:
     TestPuzzle(string prompt) : Puzzle(prompt) {}
-    bool solvePuzzle() {
+    bool solvePuzzle(ostream& out, istream& in) {
         if (!isSolved) {
             isSolved = true;
             return true;  // Successfully solved for the first time
@@ -28,23 +29,27 @@ TEST(TestPuzzleTest, DefaultConstructor) {
 
 // Test case for solving the puzzle once
 TEST(TestPuzzleTest, SolvePuzzleOnce) {
+    ostringstream oss;
+    istringstream iss;
     TestPuzzle testPuzzle("Test Puzzle");
     EXPECT_FALSE(testPuzzle.getSolved());
-    EXPECT_TRUE(testPuzzle.solvePuzzle());
+    EXPECT_TRUE(testPuzzle.solvePuzzle(oss, iss));
     EXPECT_TRUE(testPuzzle.getSolved());
 }
 
 // Test case for solving the puzzle twice
 TEST(TestPuzzleTest, SolvePuzzleTwice) {
+    ostringstream oss;
+    istringstream iss;
     TestPuzzle testPuzzle("Test Puzzle");
     EXPECT_FALSE(testPuzzle.getSolved());
-    EXPECT_TRUE(testPuzzle.solvePuzzle()); // First attempt
+    EXPECT_TRUE(testPuzzle.solvePuzzle(oss, iss)); // First attempt
     EXPECT_TRUE(testPuzzle.getSolved());
-    EXPECT_FALSE(testPuzzle.solvePuzzle()); // Second attempt should fail
+    EXPECT_FALSE(testPuzzle.solvePuzzle(oss, iss)); // Second attempt should fail
     EXPECT_TRUE(testPuzzle.getSolved()); // Puzzle state remains solved
 }
 
-int main(int argc, char **argv) {
-    testing::InitGoogleTest(&argc, argv);
-    return RUN_ALL_TESTS();
-}
+// int main(int argc, char **argv) {
+//     testing::InitGoogleTest(&argc, argv);
+//     return RUN_ALL_TESTS();
+// }

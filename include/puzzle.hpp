@@ -9,9 +9,10 @@ using namespace std;
 class Puzzle {
     public:
         Puzzle(string prompt);
+        virtual ~Puzzle() {}
         string getPrompt();
         bool getSolved();
-        virtual bool solvePuzzle() = 0;
+        virtual bool solvePuzzle(ostream&, istream&) = 0;
     protected:
         bool isSolved;
         string prompt;
