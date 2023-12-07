@@ -4,8 +4,7 @@
 #include <string>
 #include <vector>
 #include "player.hpp"
-#include "door.hpp"
-#include "lockedObject.hpp"
+#include "lockedDoor.hpp"
 using namespace std;
 
 class gameTerminal {

@@ -48,8 +48,3 @@ TEST(TestPuzzleTest, SolvePuzzleTwice) {
     EXPECT_FALSE(testPuzzle.solvePuzzle(oss, iss)); // Second attempt should fail
     EXPECT_TRUE(testPuzzle.getSolved()); // Puzzle state remains solved
 }
-
-// int main(int argc, char **argv) {
-//     testing::InitGoogleTest(&argc, argv);
-//     return RUN_ALL_TESTS();
-// }

@@ -13,7 +13,7 @@ TEST(LockedObjTests, CreateConstructorNoPuzzle)
   EXPECT_NO_THROW(lockedObject(name, description, interaction, nullptr));
 }
 
-TEST(LockedObjTests, CreateConstructorWithPuzzle)
+TEST(LockedObjTests, CreateConstructorPuzzle)
 {
   string name = "Lol1";
   string description = "Lol2";
@@ -90,7 +90,7 @@ TEST(LockedObjTests, InteractWithPuzzleCorrect)
 
   EXPECT_EQ(item.getDesc(), "Some interaction");
   EXPECT_FALSE(item.getLocked());
-  EXPECT_EQ(oss.str(), "Enter a four digit number.\n\n> \n\nCORRECT. The puzzle is now solved.\n\nThe object is now unlocked.\n\n");
+  EXPECT_EQ(oss.str(), "Enter a four digit number.\n\n> \n\nCORRECT. The puzzle is now solved.\n\n");
 }
 
 TEST(LockedObjTests, InteractWithPuzzleIncorrect)
@@ -107,5 +107,5 @@ TEST(LockedObjTests, InteractWithPuzzleIncorrect)
 
   EXPECT_EQ(item.getDesc(), "Some description");
   EXPECT_TRUE(item.getLocked());
-  EXPECT_EQ(oss.str(), "Enter a four digit number.\n\n> \n\nINCORRECT. The puzzle remains unsolved.\n\nThe object is still locked.\n\n");
+  EXPECT_EQ(oss.str(), "Enter a four digit number.\n\n> \n\nINCORRECT. The puzzle remains unsolved.\n\n");
 }

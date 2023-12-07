@@ -37,6 +37,7 @@ set(SOURCE_FILES
     src/puzzle.cpp
     src/keypadPuzzle.cpp
     src/lockedObject.cpp
+    src/lockedDoor.cpp
 )
 
 set(TEST_FILES
@@ -49,7 +50,8 @@ set(TEST_FILES
     test/testPuzzle.cpp
     test/testKeyPad.cpp
     test/testLockedObjects.cpp
-    # test/testGameTerminal.cpp
+    test/testLockedDoor.cpp
+    test/testGameTerminal.cpp
 )
 
 add_executable(runAllTests
@@ -57,9 +59,9 @@ add_executable(runAllTests
     ${SOURCE_FILES}
 )
 
-add_executable(runTerminalTest
-    test/testGameTerminal.cpp
+add_executable(PuzzleRoom
+    src/main.cpp
     ${SOURCE_FILES}
-)
+)   
 
 target_link_libraries(runAllTests gtest gtest_main)

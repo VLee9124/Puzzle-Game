@@ -80,9 +80,3 @@ TEST(PlayerTest, SetCurrRoomNullptr) {
     ASSERT_EQ(player.getCurrRoom(), nullptr);
     delete startRoom;
 }
-
-int main(int argc, char **argv)
-{
-  testing::InitGoogleTest(&argc, argv);
-  return RUN_ALL_TESTS();
-}

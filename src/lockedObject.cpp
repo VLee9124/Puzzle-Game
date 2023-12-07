@@ -12,16 +12,9 @@ void lockedObject::interact(ostream& out, istream& in) {
 }
 
 void lockedObject::unlock(ostream& out, istream& in) {
-  if (isLocked == true) {
+  if (isLocked) {
     if (objPuzzle->solvePuzzle(out, in)) {
       setLocked(false);
-      out << "The object is now unlocked." << endl << endl;
     }
-    else {
-      out << "The object is still locked." << endl << endl;
-    }
-  }
-  else {
-    out << "The object is already unlocked." << endl << endl;
   }
 }

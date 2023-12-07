@@ -16,5 +16,5 @@ public:
   void interact(ostream&, istream&) override;
   bool getLocked() { return isLocked; }
   void setLocked(bool val) { isLocked = val; }
-  void unlock(ostream&, istream&);
+  virtual void unlock(ostream&, istream&);
 };
