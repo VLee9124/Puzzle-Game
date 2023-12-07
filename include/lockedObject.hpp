@@ -1,6 +1,6 @@
 #pragma once
 
-#include "gameObject.h"
+#include "gameObject.hpp"
 
 class Puzzle;
 
@@ -15,4 +15,5 @@ public:
   void interact() override;
   bool getLocked() { return isLocked; }
   void setLocked(bool val) { isLocked = val; }
+  void unlock(ostream &out);
 };
