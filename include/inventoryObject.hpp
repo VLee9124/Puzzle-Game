@@ -1,6 +1,9 @@
 #pragma once
 
-#include "gameObject.h"
+#include <string>
+#include "gameObject.hpp"
+#include <iostream>
+using namespace std;
 
 class inventoryObject : public gameObject
 {
@@ -10,7 +13,8 @@ private:
 
 public:
   inventoryObject(string, string, string, string);
-  void interact() override;
-  void collect();
+  void interact(ostream& out, istream& in) override;
+  void collect(ostream&);
+  bool checkIfCollected();
   string getCollectMsg();
 };

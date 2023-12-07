@@ -1,8 +1,13 @@
-#include "../include/gameObject.h"
+#include "../include/gameObject.hpp"
 
 // Gameobject functions here:
 
-gameObject::gameObject(string name, string description, string interaction) : name(name), description(description), interaction(interaction) {}
+gameObject::gameObject(string objectName, string descriptionMsg, string interactionMsg)
+{
+  name = objectName;
+  description = descriptionMsg;
+  interaction = interactionMsg;
+}
 
 void gameObject::setName(string objectName)
 {
@@ -34,7 +39,7 @@ string gameObject::getInteraction()
   return interaction;
 }
 
-void gameObject::interact()
+void gameObject::interact(ostream& out, istream& in)
 {
   // We swap original description to interaction message. User is able to see object descriptions from examine(), but we want interaction message to only display when an object chooses to examine it particuarly.
   description = interaction;
