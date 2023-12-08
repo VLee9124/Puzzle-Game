@@ -1,7 +1,11 @@
 #include "../include/gameTerminal.hpp"
 #include <typeinfo>
 
-gameTerminal::gameTerminal(const vector<Room*>& importedMap) : currPlayer(importedMap.at(0)), currMap(importedMap) {}
+gameTerminal::gameTerminal(const vector<Room*>& importedMap) : currPlayer(nullptr), currMap(importedMap) {
+    if (!currMap.empty()) {
+        currPlayer.setCurrRoom(importedMap.at(0));
+    }
+}
 
 gameTerminal::~gameTerminal() {
     for (auto room : currMap) {
