@@ -109,7 +109,7 @@ Once the program detects if the player is in the EXIT room, the program will swi
 
 The following diagram showcases the main classes that will be used in the project:
 
-<img width="100%" height="100%" alt="Class Diagram" src="https://github.com/cs100/final-project-vlee084-bigna003-chakk001-mvasq094/assets/111732595/a9b37057-b2b7-4a19-8774-e63c69c6340f">
+<img width="100%" height="100%" alt="Class Diagram" src="https://github.com/cs100/final-project-vlee084-bigna003-chakk001-mvasq094/assets/86755705/3bbb37df-5d7c-48fe-866d-9a9e2fd3a4ac">
 
 Player: This class is a control class that the user will interact with throughout the course of the game. It will keep track of what room the player is currently at inside the map, while also managing an inventory system. Player will also deal largely with user input, as well as the three main functionalities of the program, which are moving around different rooms, opening the inventory, and examining the current room.
 
@@ -154,7 +154,14 @@ For reference, our old class diagram can be found here:
  ## Screenshots
  > Screenshots of the input/output after running your application
  ## Installation/Usage
- > Instructions on installing and running your application
+ The installation assumes that CMake and Make are already installed on the system. 
+ 
+ To build and install the game:
+ 1. Clone the repository to your local machine
+ 2. `cd` into local repository
+ 3. Build the project by using `cmake .` and then `make`
+ 4. Run the game executable `./bin/PuzzleGame`
+
  ## Testing
  > How was your project tested/validated? If you used CI, you should have a "build passing" badge in this README.
  
