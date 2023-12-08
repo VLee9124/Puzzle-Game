@@ -157,6 +157,19 @@ For reference, our old class diagram can be found here:
 ![screenshot8](https://github.com/cs100/final-project-vlee084-bigna003-chakk001-mvasq094/assets/111732595/bf345437-cd1b-4cac-91de-879fce52858d)
 
  ## Installation/Usage
+ There are 2 ways to install this program. You can either build the project into an executable or run the output files as is. 
+ 
+ ### Building the executable
+ The installation assumes that CMake are already installed on the system.
+ 
+ If you want to build the project into a executable:
+ 1. Clone the repository
+ 2. `cd` into local repository
+ 3. Build the project by using `cmake .`
+ 4. Run `cpack --config CPackConfig.cmake` and `cpack --config CPackSourceConfig.cmake` to build the source and executables.
+ 5. Run executable that is generated (.sh, .exe, etc.)
+ 
+ ### Installation
  The installation assumes that CMake and Make are already installed on the system. 
  
  To build and install the game:
