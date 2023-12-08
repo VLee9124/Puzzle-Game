@@ -33,9 +33,9 @@ Features: The following lists will describe all our planned features, from most 
 
 The following image represents the user experience as they go through the Puzzle Room program:
 
-<img width="80%" alt="Navigation Diagram" src="https://github.com/cs100/final-project-vlee084-bigna003-chakk001-mvasq094/assets/86755705/f2836463-6801-4e44-9c00-7de6994811f1">
+<img width="4924" alt="Navigation Diagram (1)" src="https://github.com/cs100/final-project-vlee084-bigna003-chakk001-mvasq094/assets/111732595/60478b87-25ee-4768-ac8f-0357b26c6d0d">
 
-The player will start off in the Main Menu. Once they start the game, the program creates a Player object that contains an inventory system and keeps track of the current room that they are in. The program also builds the game map, which is a collection of interconnected rooms. The user is then sent to the Main Interface. Here, the program will tell the user what room they are currently in, as well as how to use the player controls. The interface contains three major functionalities: Inventory, Move Room, and Examine Room.
+The player will start off in the Main Game Screen. Once they start the game, the program creates a Player object that contains an inventory system and keeps track of the current room that they are in. The program also builds the game map, which is a collection of interconnected rooms. The program will then tell the user what room they are currently in, as well as how to use the player controls. The main screen contains three major functionalities: Inventory, Move Room, and Examine Room.
 
 The Inventory screen will allow the user to keep track of and observe all the items they've collected so far in their inventory.
 
@@ -43,67 +43,50 @@ The Examine Room screens will allow the user to observe, interact with, and/or c
 
 The Move Room screen will allow the user to choose which room to switch to, provided that the passage to the adjacent room is unlocked.
 
-If the program detects that the player's current room is the EXIT room, the user is taken to the Victory Screen, and the game is complete. They can return to the main menu, and the map will reset. 
+If the program detects that the player's current room is the EXIT room, the user is taken to the Victory Screen, and the game is complete. The program finishes.
 
 ### Screen Layouts
 
 #### Main Menu
-<img width="60%" height="60%" alt="Main Menu" src="https://github.com/cs100/final-project-vlee084-bigna003-chakk001-mvasq094/assets/86755705/eb3aaef3-dab9-44f4-807d-c18f60645c7b">
-
-This is the first screen that the user sees when starting the program. After the game welcomes you, you are tasked to either enter S or Q to start or quit the game. 
 
 Every line that requires user input will start with >. Every user input will be represented in chars. Also, if at any point an invalid character is entered, the program doesn’t proceed until a valid character is read.
 
-#### Main Interface
-<img width="60%" height="60%" alt="Main Interface" src="https://github.com/cs100/final-project-vlee084-bigna003-chakk001-mvasq094/assets/86755705/f75f680e-2559-44e8-97e3-e572f9ee114e">
+#### Main Screen
+
+<img width="60%" height="60%" alt="Main Interface" src="https://github.com/cs100/final-project-vlee084-bigna003-chakk001-mvasq094/assets/111732595/40598ea9-c448-4e25-a9c5-104be0addfa4">
 
 This is the main interface that the user will interact with during the game. The screen outputs the room name and description that the player is in. 
 
 Then, they are tasked to enter F to examine, I to open their inventory, and M to move to a different room. The player can also quit at any time.
 
 #### Examine Room
-<img width="60%" height="60%" alt="Examine Room" src="https://github.com/cs100/final-project-vlee084-bigna003-chakk001-mvasq094/assets/86755705/d8d31297-7267-4eea-b096-736a4146fac0">
 
-Players will be taken to this screen after they input F back at the main interface. They are given a list of all the object names in the current room and are tasked to enter a number or quit. 
+<img width="60%" height="60%" alt="Examine Room" src="https://github.com/cs100/final-project-vlee084-bigna003-chakk001-mvasq094/assets/111732595/6519200e-f582-4fa1-99f0-fad849c6e679">
 
-Once a valid number is inputted, the program returns that respective object’s observation as a string. 
+Players will be taken to this screen after they input F back at the main screen. They are given a list of all the object names in the current room and are tasked to enter a number or quit. 
 
-Then, if the object is interactable OR can be collected, proceed to Ask To Interact and/or Ask to Take From Room screens.
-
-The player will only be taken back to the main interface if they enter Q.
-
-##### Ask To Interact
-<img width="60%" height="60%" alt="Main Menu" src="https://github.com/cs100/final-project-vlee084-bigna003-chakk001-mvasq094/assets/86755705/1c05d59c-118e-4e64-99c9-18b2a8a6c6dd">
-
-If the object is interactable, the program asks if the user wants to interact with the specified object, and the player has a choice to enter Y to accept or N to decline. 
-
-If the user accepts, the program returns the object’s interaction as a string output.
-
-##### Ask To Take From Room
-<img width="60%" height="60%" alt="Main Menu" src="https://github.com/cs100/final-project-vlee084-bigna003-chakk001-mvasq094/assets/86755705/8ae521de-d286-44e1-a988-6514e4f85e6f">
-
-If the object can be collected by the player, the program asks if they want to do so using Y or N. 
-
-If so, the program removes the object from the room and adds it into the player’s inventory.
+Once a valid number is inputted, the program returns that respective object’s observation as a string, then performs an interaction specific to the type of object it is.
 
 #### Inventory
-<img width="60%" height="60%" alt="Main Menu" src="https://github.com/cs100/final-project-vlee084-bigna003-chakk001-mvasq094/assets/86755705/0b455dcc-9a5d-40d2-8c55-332306e4db0e">
+
+<img width="60%" height="60%" alt="Main Menu" src="https://github.com/cs100/final-project-vlee084-bigna003-chakk001-mvasq094/assets/111732595/315e0b6c-a871-467c-aa97-8aa6258fdbda">
 
 The player will be taken to this screen after entering I in the main interface. Here, the player will be given a list of all the object names in their inventory and are tasked to choose which one to observe, or to quit.
 
 If the user enters a valid number, the program will return the specified object’s observation as a string. Continue taking user input until Q is read.
 
 #### Move Room
-<img width="60%" height="60%" alt="Main Menu" src="https://github.com/cs100/final-project-vlee084-bigna003-chakk001-mvasq094/assets/86755705/28fa9c9f-bbe9-4e43-a888-1651c5e0293a">
+<img width="60%" height="60%" alt="Main Menu" src="https://github.com/cs100/final-project-vlee084-bigna003-chakk001-mvasq094/assets/111732595/36d5fbcd-ca49-4315-8775-ad3d00f25ac8">
 
 After the user enters M in the main interface, they are taken to this screen, where they will be given a list of rooms that are adjacent to the one the player is in right now. The user is tasked to enter a number to move to its respective room.
 
 The program will tell the user if the move was successful. If it is, the current room is reassigned. Otherwise, keep the user in the room they were in initially.
 
 #### Victory
-<img width="60%" height="60%" alt="Main Menu" src="https://github.com/cs100/final-project-vlee084-bigna003-chakk001-mvasq094/assets/86755705/82b49e95-3f96-4695-9cd3-370e4345e2c1">
 
-Once the program detects if the player is in the EXIT room, the program will switch to the victory screen. The player has to simply enter S to complete the game and return to the main menu.
+<img width="60%" height="60%" alt="Main Menu" src="https://github.com/cs100/final-project-vlee084-bigna003-chakk001-mvasq094/assets/111732595/1c312a4f-b02c-40aa-abb0-6bd25e77901e">
+
+Once the program detects if the player is in the EXIT room, the program will switch to the victory screen. The player has to simply enter any key to complete the game and return to the main menu.
 
 ## Class Diagram
 
