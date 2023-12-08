@@ -109,25 +109,27 @@ Once the program detects if the player is in the EXIT room, the program will swi
 
 The following diagram showcases the main classes that will be used in the project:
 
-<img width="100%" height="100%" alt="Class Diagram" src="https://github.com/cs100/final-project-vlee084-bigna003-chakk001-mvasq094/assets/86755705/3bbb37df-5d7c-48fe-866d-9a9e2fd3a4ac">
+<img width="100%" height="100%" alt="Class Diagram" src="https://github.com/cs100/final-project-vlee084-bigna003-chakk001-mvasq094/assets/111732595/1b7674db-54e4-4383-84ea-45204d0f6c62">
 
-Player: This class is a control class that the user will interact with throughout the course of the game. It will keep track of what room the player is currently at inside the map, while also managing an inventory system. Player will also deal largely with user input, as well as the three main functionalities of the program, which are moving around different rooms, opening the inventory, and examining the current room.
+GameTerminal: This class serves as the control class that handles game flow. It is responsible for I/O throughout the entirety of the program.
 
-Inventory: This class, which can only be used by a Player, manages a collection of GameObjects that the user can keep track of as they traverse through the map. There can be as many or as little GameObjects in Inventory, but the relationship between the inventory system and the Player is 1 to 1.
+Player: This will keep track of what room the player is currently at inside the map, while also managing an inventory system.
 
-Room: This class will largely make up the map of the program. They essentially act as the map's "nodes" that contain GameObjects, as well as doors that connect different rooms together. The user will have to traverse through different rooms in order to successfully finish the game.
+Inventory: This class, which can only be used by a Player, manages a collection of GameObjects that the user can keep track of as they traverse through the map. There can be as many or as little GameObjects in Inventory.
 
-GameObject: These are essentially the building blocks to the puzzle element in our program. GameObjects are anything that can be observed/interacted by the player. They may provide clues or solutions, but they can also serve as obstacles to the player. GameObjects also have the ability to be modified/interacted with by the user so that new information can be extracted from it. Many of our GameObjects will be contained inside rooms.
+Room: This class will largely make up the map of the program. The user will have to traverse through different rooms in order to successfully finish the game.
+
+GameObject: These are essentially the building blocks to the puzzle element in our program. GameObjects are anything that can be observed/interacted by the user to help communicate clues. Many of our GameObjects will be contained inside rooms.
 
 InventoryObject: These are special GameObjects that can be taken from a room and collected by the player to store inside of their inventory.
 
-Door: Doors are a special type of GameObject that contain a pointer to another room. These types of doors are unlocked by default. These serve as the main methods of player movement in the game.
+Door: Doors are a special type of GameObject that contain a pointer to another room. These serve as the main methods of player movement in the game.
 
 LockedObject: These special objects cannot be interacted with unless the user can solve their associated puzzle that will unlock upon completion.
 
 LockedDoor: Derived from both Door and LockedObject, the user cannot interact with or access its adjacent door unless they complete their associated puzzle.
 
-Puzzle: Puzzles are the main obstacles that will block player progress during the game. They can be affixed to GameObjects, particularly PuzzleDoors, so that the player cannot interact or unlock the object unless they complete its puzzle. Keep in mind that this generic Puzzle class is abstract, and different types of Puzzles will derive from it.
+Puzzle: Puzzles are the main obstacles that will block player progress during the game. Keep in mind that this generic Puzzle class is abstract, and different types of Puzzles will derive from it.
 
 KeypadPuzzle: This is a type of Puzzle that requires the user to enter a numeric passcode in order to solve it.
 
@@ -142,17 +144,18 @@ For reference, our old class diagram can be found here:
 * 2023/11/14: We realized that Door violates the Single Responsibility Priniciple since it has two tasks - checking if the door is locked and getting the adjacent room. Thus, we created another subtype of GameObject called LockedObject that will deal with any object that is locked. Door now doesn't have a checkIfLocked() function anymore, and we also updated the LockedDoor class to extend from both Door and LockedObject. Because of this change, Door class is more stable and easily defined, and we can also create non-Door objects that can also be locked, making the locked feature more applicable.
 * 2023/11/15: The Player class had violated the Single Responsibility Principle since it tried to be an entity that controls the current room, as well as an interface that outputs the "screens" at the same time. To solve this, the outputting responsibility will be done by a different class called GameTerminal, which fully manages the game loop. This way, Player just has to deal with keeping track of the current room, and we also separate our I/O classes from the rest of our program, which makes our code more readable and easier to maintain.
 * 2023/11/21: We realized that because the data members of every class were either protected or private, there wasn't a way for the classes to communicate with each other. Thus, we added setters and getters for most of our classes, as well as extra functionality for classes such as Inventory to increase the amount of information that Player (and by extension, GameTerminal) can access. This change was made in response to TA feedback after Phase II.
-
- 
- > ## Final deliverable
- > All group members will give a demo to the reader during lab time. ou should schedule your demo on Calendly with the same reader who took your second scrum meeting. The reader will check the demo and the project GitHub repository and ask a few questions to all the team members. 
- > Before the demo, you should do the following:
- > * Complete the sections below (i.e. Screenshots, Installation/Usage, Testing)
- > * Plan one more sprint (that you will not necessarily complete before the end of the quarter). Your In-progress and In-testing columns should be empty (you are not doing more work currently) but your TODO column should have a full sprint plan in it as you have done before. This should include any known bugs (there should be some) or new features you would like to add. These should appear as issues/cards on your Project board.
- > * Make sure your README file and Project board are up-to-date reflecting the current status of your project (e.g. any changes that you have made during the project such as changes to your class diagram). Previous versions should still be visible through your commit history. 
+* 2023/12/7: We cleaned up the class diagram to make it reflect our actual implementation. All the classes, functions, parameters, and return types should be the same as mentioned in the hpp files.
  
  ## Screenshots
- > Screenshots of the input/output after running your application
+![screenshot1](https://github.com/cs100/final-project-vlee084-bigna003-chakk001-mvasq094/assets/111732595/a634edc0-d558-4901-877d-a0c58e7f343a)
+![screenshot2](https://github.com/cs100/final-project-vlee084-bigna003-chakk001-mvasq094/assets/111732595/1f763b0d-7912-4f11-95ad-16c8ab76c8a5)
+![screenshot3](https://github.com/cs100/final-project-vlee084-bigna003-chakk001-mvasq094/assets/111732595/cafd4cd5-8782-4aed-a0a0-5429409708fc)
+![screenshot4](https://github.com/cs100/final-project-vlee084-bigna003-chakk001-mvasq094/assets/111732595/12556f36-aada-44f3-9a10-e3f3d2ee2c83)
+![screenshot5](https://github.com/cs100/final-project-vlee084-bigna003-chakk001-mvasq094/assets/111732595/531b5b03-7bbb-4298-8eda-712aae537088)
+![screenshot6](https://github.com/cs100/final-project-vlee084-bigna003-chakk001-mvasq094/assets/111732595/db752ed9-18e4-40bf-9bfb-d9d2f702ee51)
+![screenshot7](https://github.com/cs100/final-project-vlee084-bigna003-chakk001-mvasq094/assets/111732595/33932043-8437-4df0-86fe-73f76b10114c)
+![screenshot8](https://github.com/cs100/final-project-vlee084-bigna003-chakk001-mvasq094/assets/111732595/bf345437-cd1b-4cac-91de-879fce52858d)
+
  ## Installation/Usage
  The installation assumes that CMake and Make are already installed on the system. 
  
@@ -163,5 +166,12 @@ For reference, our old class diagram can be found here:
  4. Run the game executable `./bin/PuzzleGame`
 
  ## Testing
- > How was your project tested/validated? If you used CI, you should have a "build passing" badge in this README.
+ We used GoogleTests to verify that our functions and classes work as planned. Below are screenshots of all the unit tests that we wrote.
  
+![test1](https://github.com/cs100/final-project-vlee084-bigna003-chakk001-mvasq094/assets/111732595/c3c7d0da-9a84-4f68-808e-9adc39ecc95d)
+![test2](https://github.com/cs100/final-project-vlee084-bigna003-chakk001-mvasq094/assets/111732595/35516dd2-273e-4457-8ea8-82d6ac1e471d)
+![test3](https://github.com/cs100/final-project-vlee084-bigna003-chakk001-mvasq094/assets/111732595/078259cf-6a4b-4fde-a0c9-25998fb4a471)
+![test4](https://github.com/cs100/final-project-vlee084-bigna003-chakk001-mvasq094/assets/111732595/0fbca2e5-e9bd-40a5-8a81-a6bd3ff752a7)
+![test5](https://github.com/cs100/final-project-vlee084-bigna003-chakk001-mvasq094/assets/111732595/fbabc4fb-583c-496a-a09c-ad33264660c5)
+![test6](https://github.com/cs100/final-project-vlee084-bigna003-chakk001-mvasq094/assets/111732595/148408c8-49e6-42ee-8089-8e9eabb9a2dd)
+
