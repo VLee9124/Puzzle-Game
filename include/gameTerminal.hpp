@@ -16,7 +16,6 @@ class gameTerminal {
         void proceedToOpenInventory(ostream&, istream&);
         void proceedToMoveTo(ostream&, istream&);
         void proceedToExamineRoom(ostream&, istream&);
-        void proceedToExamineObject(ostream&, istream&);
         void proceedToWinScreen(ostream&, istream&);
     private:
         Player currPlayer;
